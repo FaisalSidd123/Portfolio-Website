@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import emailjs from '@emailjs/browser';
 import './Contact.css';
 
 const Contact = () => {
@@ -11,66 +12,128 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [activeField, setActiveField] = useState(null);
   
   const contactRef = useRef(null);
   const formRef = useRef(null);
-  const fieldsRef = useRef([]);
+  const fieldRefs = useRef([]);
   const timelineRef = useRef(null);
 
   const contactMethods = [
     {
       icon: '✉️',
       title: 'Email',
-      value: 'hello@faisalsiddique.com',
-      action: 'mailto:hello@faisalsiddique.com'
+      value: 'faisalsiddique.129@gmail.com',
+      action: 'mailto:faisalsiddique.129@gmail.com',
+      color: '#6366f1'
     },
     {
       icon: '📱',
       title: 'Phone',
-      value: '+1 (234) 567-8900',
-      action: 'tel:+12345678900'
+      value: '+92-3120009405',
+      action: 'tel:+923120009405',
+      color: '#8b5cf6'
     },
     {
       icon: '📍',
       title: 'Location',
-      value: 'Based in India',
-      action: null
+      value: 'Karachi, Pakistan',
+      action: null,
+      color: '#d946ef'
     }
   ];
 
   const socialLinks = [
-    { platform: 'LinkedIn', handle: '@faisalsiddique', url: 'https://linkedin.com', icon: '💼' },
-    { platform: 'GitHub', handle: '@faisalsiddique', url: 'https://github.com', icon: '💻' },
-    { platform: 'Twitter', handle: '@faisalsiddique', url: 'https://twitter.com', icon: '🐦' },
-    { platform: 'Instagram', handle: '@faisalsiddique', url: 'https://instagram.com', icon: '📸' }
+    { 
+      platform: 'LinkedIn', 
+      handle: '@faisalsiddique', 
+      url: 'https://linkedin.com/in/faisalsiddique', 
+      icon: '💼',
+      color: '#0077b5'
+    },
+    { 
+      platform: 'GitHub', 
+      handle: '@faisalsiddique', 
+      url: 'https://github.com/faisalsiddique', 
+      icon: '💻',
+      color: '#333'
+    },
+    { 
+      platform: 'Twitter', 
+      handle: '@faisalsiddique', 
+      url: 'https://twitter.com/faisalsiddique', 
+      icon: '🐦',
+      color: '#1da1f2'
+    },
+    { 
+      platform: 'Instagram', 
+      handle: '@faisalsiddique', 
+      url: 'https://instagram.com/faisalsiddique', 
+      icon: '📸',
+      color: '#e4405f'
+    }
   ];
 
+  // EmailJS configuration
+  const EMAILJS_CONFIG = {
+    serviceId: 'service_2hsw40q',
+    templateId: 'template_x9qjank',
+    publicKey: 'KjG_-tf52_1Njgm8c',
+    toName: 'Web Wizard'
+  };
+
   useEffect(() => {
-    // Entrance animations
+    // Initialize EmailJS with your public key
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+
+    // Set initial state to visible to prevent flickering
+    gsap.set('.contact-component .contact-header', { opacity: 1 });
+    gsap.set('.contact-component .contact-method', { opacity: 1 });
+    gsap.set('.contact-component .form-field', { opacity: 1 });
+    gsap.set('.contact-component .info-section', { opacity: 1 });
+
+    // Entrance animations with clearProps to ensure elements remain visible
     timelineRef.current = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .from('.contact-header', {
+      .from('.contact-component .contact-header', {
         y: 30,
         opacity: 0,
-        duration: 0.8
+        duration: 0.8,
+        clearProps: 'all'
       })
-      .from('.contact-method', {
-        x: -30,
+      .from('.contact-component .form-card', {
+        x: -40,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.1
+        duration: 0.8,
+        clearProps: 'all'
       }, '-=0.4')
-      .from('.form-field', {
+      .from('.contact-component .info-section', {
+        x: 40,
+        opacity: 0,
+        duration: 0.8,
+        clearProps: 'all'
+      }, '-=0.6')
+      .from('.contact-component .contact-method', {
         y: 20,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.1
+        duration: 0.5,
+        stagger: 0.1,
+        clearProps: 'all'
+      }, '-=0.4')
+      .from('.contact-component .social-item', {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        clearProps: 'all'
       }, '-=0.3');
 
     // Floating animation for decorative elements
-    gsap.to('.floating-element', {
+    gsap.to('.contact-component .floating-element', {
       y: 20,
-      duration: 3,
+      x: 10,
+      rotation: 5,
+      duration: 4,
       repeat: -1,
       yoyo: true,
       ease: 'sine.inOut',
@@ -84,9 +147,9 @@ const Contact = () => {
 
   const handleFieldFocus = (index) => {
     setActiveField(index);
-    if (fieldsRef.current[index]) {
-      gsap.to(fieldsRef.current[index], {
-        scale: 1.02,
+    if (fieldRefs.current[index]) {
+      gsap.to(fieldRefs.current[index], {
+        scale: 1.01,
         duration: 0.3,
         ease: 'power2.out'
       });
@@ -95,8 +158,8 @@ const Contact = () => {
 
   const handleFieldBlur = (index) => {
     setActiveField(null);
-    if (fieldsRef.current[index]) {
-      gsap.to(fieldsRef.current[index], {
+    if (fieldRefs.current[index]) {
+      gsap.to(fieldRefs.current[index], {
         scale: 1,
         duration: 0.3,
         ease: 'power2.out'
@@ -110,55 +173,106 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    // Clear any previous errors when user starts typing
+    if (submitError) setSubmitError(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Success animation
-    gsap.from('.success-message', {
-      scale: 0,
-      opacity: 0,
-      duration: 0.6,
-      ease: 'back.out(1.7)'
-    });
+    try {
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        to_name: EMAILJS_CONFIG.toName,
+        subject: formData.subject,
+        message: formData.message,
+        reply_to: formData.email
+      };
 
-    // Reset form after delay
-    setTimeout(() => {
-      setIsSubmitted(false);
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams
+      );
+
+      console.log('Email sent successfully!', response);
+
+      // Success state
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+
+      // Success animation
+      gsap.from('.contact-component .success-message', {
+        scale: 0,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'back.out(1.7)',
+        clearProps: 'all'
+      });
+
+      // Reset form data
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-    }, 4000);
+
+      // Reset success message after delay
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setIsSubmitting(false);
+      setSubmitError('Failed to send message. Please try again or contact me directly at faisalsiddique.129@gmail.com');
+      
+      // Error animation
+      gsap.from('.contact-component .error-message', {
+        y: -20,
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+        clearProps: 'all'
+      });
+    }
   };
 
   const handleContactAction = (action) => {
     if (action) {
-      window.open(action, '_blank');
+      window.location.href = action;
     }
   };
 
   const handleSocialClick = (url) => {
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
+    setSubmitError(null);
+    setIsSubmitted(false);
   };
 
   return (
-    <section className="contact-section" id="contact" ref={contactRef}>
+    <section className="contact-component contact-section" id="contact" ref={contactRef}>
       {/* Decorative floating elements */}
       <div className="contact-decoration">
         <div className="floating-element element-1"></div>
         <div className="floating-element element-2"></div>
         <div className="floating-element element-3"></div>
+        <div className="grid-pattern"></div>
       </div>
 
       <div className="contact-wrapper">
@@ -166,11 +280,14 @@ const Contact = () => {
         <div className="contact-header">
           <div className="section-badge">
             <div className="badge-line"></div>
-            <span>Get in Touch</span>
+            <span>Let's Connect</span>
           </div>
-          <h2 className="section-title">Let's Build Something Great</h2>
+          <h2 className="section-title">
+            Get in <span className="gradient-text">Touch</span>
+          </h2>
           <p className="section-subtitle">
-            Have a project in mind? I'd love to hear about it. Send me a message and let's create something amazing together.
+            Have a project in mind or just want to chat? I'd love to hear from you. 
+            Let's create something amazing together!
           </p>
         </div>
 
@@ -179,19 +296,25 @@ const Contact = () => {
           <div className="contact-form-section">
             <div className="form-card">
               <div className="form-header">
-                <h3 className="form-title">Send a Message</h3>
-                <p className="form-subtitle">I typically respond within 24 hours</p>
+                <div className="form-icon">💬</div>
+                <div className="form-header-content">
+                  <h3 className="form-title">Send a Message</h3>
+                  <p className="form-subtitle">I typically respond within 24 hours</p>
+                </div>
               </div>
 
               <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-fields">
-                  <div className="form-field">
-                    <div className="field-header">
+                  <div 
+                    ref={el => fieldRefs.current[0] = el}
+                    className="form-field"
+                  >
+                    <label htmlFor="name" className="field-label">
                       <span className="field-icon">👤</span>
-                      <label htmlFor="name" className="field-label">Full Name</label>
-                    </div>
+                      <span>Full Name</span>
+                      <span className="required">*</span>
+                    </label>
                     <input
-                      ref={el => fieldsRef.current[0] = el}
                       type="text"
                       id="name"
                       name="name"
@@ -202,17 +325,20 @@ const Contact = () => {
                       className={`field-input ${activeField === 0 ? 'focused' : ''}`}
                       placeholder="John Doe"
                       required
+                      disabled={isSubmitting || isSubmitted}
                     />
-                    <div className="field-line"></div>
                   </div>
 
-                  <div className="form-field">
-                    <div className="field-header">
+                  <div 
+                    ref={el => fieldRefs.current[1] = el}
+                    className="form-field"
+                  >
+                    <label htmlFor="email" className="field-label">
                       <span className="field-icon">✉️</span>
-                      <label htmlFor="email" className="field-label">Email Address</label>
-                    </div>
+                      <span>Email Address</span>
+                      <span className="required">*</span>
+                    </label>
                     <input
-                      ref={el => fieldsRef.current[1] = el}
                       type="email"
                       id="email"
                       name="email"
@@ -223,17 +349,20 @@ const Contact = () => {
                       className={`field-input ${activeField === 1 ? 'focused' : ''}`}
                       placeholder="john@example.com"
                       required
+                      disabled={isSubmitting || isSubmitted}
                     />
-                    <div className="field-line"></div>
                   </div>
 
-                  <div className="form-field">
-                    <div className="field-header">
+                  <div 
+                    ref={el => fieldRefs.current[2] = el}
+                    className="form-field"
+                  >
+                    <label htmlFor="subject" className="field-label">
                       <span className="field-icon">📌</span>
-                      <label htmlFor="subject" className="field-label">Subject</label>
-                    </div>
+                      <span>Subject</span>
+                      <span className="required">*</span>
+                    </label>
                     <input
-                      ref={el => fieldsRef.current[2] = el}
                       type="text"
                       id="subject"
                       name="subject"
@@ -244,17 +373,20 @@ const Contact = () => {
                       className={`field-input ${activeField === 2 ? 'focused' : ''}`}
                       placeholder="Project Inquiry"
                       required
+                      disabled={isSubmitting || isSubmitted}
                     />
-                    <div className="field-line"></div>
                   </div>
 
-                  <div className="form-field">
-                    <div className="field-header">
+                  <div 
+                    ref={el => fieldRefs.current[3] = el}
+                    className="form-field form-field-full"
+                  >
+                    <label htmlFor="message" className="field-label">
                       <span className="field-icon">💬</span>
-                      <label htmlFor="message" className="field-label">Your Message</label>
-                    </div>
+                      <span>Your Message</span>
+                      <span className="required">*</span>
+                    </label>
                     <textarea
-                      ref={el => fieldsRef.current[3] = el}
                       id="message"
                       name="message"
                       value={formData.message}
@@ -265,18 +397,36 @@ const Contact = () => {
                       placeholder="Tell me about your project, timeline, and any specific requirements..."
                       rows="5"
                       required
+                      disabled={isSubmitting || isSubmitted}
                     />
-                    <div className="field-line"></div>
                   </div>
                 </div>
 
+                {/* Error Message */}
+                {submitError && (
+                  <div className="error-message">
+                    <div className="error-icon">⚠️</div>
+                    <div className="error-content">
+                      <p className="error-text">{submitError}</p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Success Message */}
                 {isSubmitted ? (
                   <div className="success-message">
                     <div className="success-icon">✓</div>
                     <div className="success-content">
                       <h4 className="success-title">Message Sent Successfully!</h4>
-                      <p className="success-text">Thank you for reaching out. I'll get back to you shortly.</p>
+                      <p className="success-text">Thank you for reaching out. I'll get back to you within 24 hours.</p>
                     </div>
+                    <button 
+                      type="button" 
+                      className="reset-button"
+                      onClick={resetForm}
+                    >
+                      Send Another Message
+                    </button>
                   </div>
                 ) : (
                   <button 
@@ -286,7 +436,12 @@ const Contact = () => {
                   >
                     <span className="button-content">
                       <span className="button-text">
-                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                        {isSubmitting ? (
+                          <>
+                            <span className="spinner"></span>
+                            Sending...
+                          </>
+                        ) : 'Send Message'}
                       </span>
                       <span className="button-arrow">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -303,49 +458,51 @@ const Contact = () => {
 
           {/* Right Column - Contact Info */}
           <div className="contact-info-section">
-            <div className="info-card">
-              <div className="info-header">
-                <h3 className="info-title">Contact Information</h3>
-                <p className="info-subtitle">Other ways to connect</p>
-              </div>
-
-              <div className="contact-methods">
-                {contactMethods.map((method, index) => (
-                  <div 
-                    key={index}
-                    className={`contact-method ${method.action ? 'clickable' : ''}`}
-                    onClick={() => handleContactAction(method.action)}
-                  >
-                    <div className="method-icon">{method.icon}</div>
-                    <div className="method-content">
-                      <div className="method-title">{method.title}</div>
-                      <div className="method-value">{method.value}</div>
-                    </div>
-                    {method.action && (
-                      <div className="method-action">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+            <div className="info-section">
+              {/* Contact Methods */}
+              <div className="contact-methods-card">
+                <h3 className="section-heading">Contact Information</h3>
+                <div className="contact-methods">
+                  {contactMethods.map((method, index) => (
+                    <div 
+                      key={index}
+                      className={`contact-method ${method.action ? 'clickable' : ''}`}
+                      onClick={() => handleContactAction(method.action)}
+                      style={{ '--method-color': method.color }}
+                    >
+                      <div className="method-icon-wrapper">
+                        <div className="method-icon">{method.icon}</div>
                       </div>
-                    )}
-                  </div>
-                ))}
+                      <div className="method-content">
+                        <div className="method-title">{method.title}</div>
+                        <div className="method-value">{method.value}</div>
+                      </div>
+                      {method.action && (
+                        <div className="method-action">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="social-section">
-                <div className="social-header">
-                  <h4 className="social-title">Connect with me</h4>
-                  <p className="social-subtitle">Let's stay connected</p>
-                </div>
+              {/* Social Links */}
+              <div className="social-card">
+                <h3 className="section-heading">Follow Me</h3>
+                <p className="section-subheading">Let's stay connected on social media</p>
                 <div className="social-grid">
                   {socialLinks.map((social, index) => (
                     <div
                       key={index}
                       className="social-item"
                       onClick={() => handleSocialClick(social.url)}
+                      style={{ '--social-color': social.color }}
                     >
                       <div className="social-icon">{social.icon}</div>
-                      <div className="social-info">
+                      <div className="social-content">
                         <div className="social-platform">{social.platform}</div>
                         <div className="social-handle">{social.handle}</div>
                       </div>
@@ -359,14 +516,28 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="availability-section">
-                <div className="availability-badge">
-                  <div className="availability-dot pulse"></div>
-                  <span>Available for new projects</span>
+              {/* Availability */}
+              <div className="availability-card">
+                <div className="availability-header">
+                  <div className="availability-badge">
+                    <div className="availability-dot pulse"></div>
+                    <span>Available for Work</span>
+                  </div>
                 </div>
                 <p className="availability-text">
-                  I'm currently accepting select freelance opportunities and full-time positions.
+                  I'm currently accepting select freelance opportunities and full-time positions. 
+                  Let's discuss how I can help bring your project to life.
                 </p>
+                <div className="availability-stats">
+                  <div className="stat-item">
+                    <div className="stat-value">24h</div>
+                    <div className="stat-label">Response Time</div>
+                  </div>
+                  <div className="stat-item">
+                    <div className="stat-value">100%</div>
+                    <div className="stat-label">Satisfaction</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -55,7 +55,7 @@ const ProfileCard = ({
   return (
     <div 
       ref={cardRef}
-      className={`profile-card ${className}`}
+      className={`profile-component profile-card ${className}`}
       style={cardStyle}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}

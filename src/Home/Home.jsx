@@ -54,7 +54,7 @@ function HomePage() {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-component home-container">
       {/* Aurora Background */}
       <Aurora 
         colorStops={['#0011ff', '#00ff9d', '#5227FF']}
@@ -63,7 +63,7 @@ function HomePage() {
       />
       
       {/* Gradient Overlay */}
-      <div className="gradient-overlay"></div>
+      <div className="home-gradient-overlay"></div>
       
       {/* Navigation */}
       <ModernNav 
@@ -79,65 +79,64 @@ function HomePage() {
       
       {/* Main Content */}
       <div className="home-content" ref={contentRef}>
-        
-        {/* Status Badge
-        <div className="status-badge">
-          <div className="status-dot"></div>
+        {/* Status Badge (commented but kept for reference)
+        <div className="home-status-badge">
+          <div className="home-status-dot"></div>
           <span>Available for projects</span>
         </div> */}
 
         {/* Hero Section */}
-        <div className="hero-content">
+        <div className="home-hero-content">
           
-          {/* Greeting
-          <div className="greeting-section">
-            <h1 className="greeting">
-              Hi there, <span className="wave">👋</span>
+          {/* Greeting (commented but kept for reference)
+          <div className="home-greeting-section">
+            <h1 className="home-greeting">
+              Hi there, <span className="home-wave">👋</span>
             </h1>
           </div> */}
 
           {/* Main Title */}
-          <div className="title-section">
-            <div className={`title-wrapper ${isTyping ? 'typing' : ''}`}>
-              <h2 className="main-title">
+          <div className="home-title-section">
+            <div className={`home-title-wrapper ${isTyping ? 'typing' : ''}`}>
+              <h2 className="home-main-title">
                 {greetings[textIndex]}
-                <span className="typing-cursor">|</span>
+                <span className="home-typing-cursor">|</span>
               </h2>
             </div>
-            <p className="tagline">
+            <p className="home-tagline">
               {taglines[textIndex]}
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div className="action-buttons">
+          <div className="home-action-buttons">
             <button 
-              className="action-button primary" 
+              className="home-action-button home-primary-button" 
               onClick={handleWorkClick}
             >
-              <span className="button-content">
-                <span className="button-text">View Projects</span>
-                <span className="button-icon">↗</span>
+              <span className="home-button-content">
+                <span className="home-button-text">View Projects</span>
+                <span className="home-button-icon">↗</span>
               </span>
             </button>
             <button 
-              className="action-button secondary" 
+              className="home-action-button home-secondary-button" 
               onClick={handleContactClick}
             >
-              <span className="button-content">
-                <span className="button-text">Get in Touch</span>
-                <span className="button-icon">✉️</span>
+              <span className="home-button-content">
+                <span className="home-button-text">Get in Touch</span>
+                <span className="home-button-icon">✉️</span>
               </span>
             </button>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="scroll-indicator">
-          <div className="indicator-line">
-            <div className="indicator-dot"></div>
+        <div className="home-scroll-indicator">
+          <div className="home-indicator-line">
+            <div className="home-indicator-dot"></div>
           </div>
-          <span className="indicator-text">Scroll</span>
+          <span className="home-indicator-text">Scroll</span>
         </div>
       </div>
     </div>

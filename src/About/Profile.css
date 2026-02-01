@@ -1,30 +1,32 @@
+/* Profile.css - Isolated Profile Card Styles */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
-:root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #111111;
-  --bg-card: rgba(17, 17, 17, 0.8);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent-primary: #6366f1;
-  --accent-secondary: #8b5cf6;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --shadow-color: rgba(99, 102, 241, 0.1);
-  --glass-effect: rgba(255, 255, 255, 0.05);
-  --card-radius: 24px;
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* CSS Variables - Unique to Profile Component */
+.profile-component {
+  --profile-bg-primary: #0a0a0a;
+  --profile-bg-secondary: #111111;
+  --profile-bg-card: rgba(17, 17, 17, 0.8);
+  --profile-text-primary: #f8fafc;
+  --profile-text-secondary: #94a3b8;
+  --profile-text-muted: #64748b;
+  --profile-accent-primary: #6366f1;
+  --profile-accent-secondary: #8b5cf6;
+  --profile-border-color: rgba(255, 255, 255, 0.1);
+  --profile-shadow-color: rgba(99, 102, 241, 0.1);
+  --profile-glass-effect: rgba(255, 255, 255, 0.05);
+  --profile-card-radius: 24px;
+  --profile-transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.profile-card {
-    font-family: 'Poppins', sans-serif;
-
+/* Profile Card */
+.profile-component.profile-card {
+  font-family: 'Poppins', sans-serif;
   position: relative;
-  background: var(--bg-card);
+  background: var(--profile-bg-card);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--border-color);
-  border-radius: var(--card-radius);
+  border: 1px solid var(--profile-border-color);
+  border-radius: var(--profile-card-radius);
   padding: 2rem;
   max-width: 400px;
   width: 100%;
@@ -33,11 +35,11 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06),
     0 0 0 1px rgba(99, 102, 241, 0.1);
   overflow: hidden;
-  transition: var(--transition-smooth);
+  transition: var(--profile-transition-smooth);
   will-change: transform;
 }
 
-.profile-card__glow {
+.profile-component .profile-card__glow {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,17 +47,17 @@
   height: 1px;
   background: linear-gradient(90deg, 
     transparent, 
-    var(--accent-primary), 
+    var(--profile-accent-primary), 
     transparent);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.profile-card:hover .profile-card__glow {
+.profile-component.profile-card:hover .profile-card__glow {
   opacity: 1;
 }
 
-.profile-card__content {
+.profile-component .profile-card__content {
   position: relative;
   z-index: 2;
   display: flex;
@@ -64,44 +66,44 @@
   gap: 1.5rem;
 }
 
-.profile-card__avatar-container {
+.profile-component .profile-card__avatar-container {
   position: relative;
   width: 140px;
   height: 140px;
 }
 
-.profile-card__avatar-frame {
+.profile-component .profile-card__avatar-frame {
   position: relative;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   padding: 4px;
   background: linear-gradient(135deg, 
-    var(--accent-primary), 
-    var(--accent-secondary));
+    var(--profile-accent-primary), 
+    var(--profile-accent-secondary));
   box-shadow: 
     0 0 40px rgba(99, 102, 241, 0.3),
     inset 0 0 20px rgba(255, 255, 255, 0.1);
-  transition: var(--transition-smooth);
+  transition: var(--profile-transition-smooth);
 }
 
-.profile-card:hover .profile-card__avatar-frame {
+.profile-component.profile-card:hover .profile-card__avatar-frame {
   transform: scale(1.05);
   box-shadow: 
     0 0 60px rgba(99, 102, 241, 0.4),
     inset 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
-.profile-card__avatar {
+.profile-component .profile-card__avatar {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--bg-secondary);
-  transition: var(--transition-smooth);
+  border: 3px solid var(--profile-bg-secondary);
+  transition: var(--profile-transition-smooth);
 }
 
-.profile-card__avatar-overlay {
+.profile-component .profile-card__avatar-overlay {
   position: absolute;
   top: 4px;
   left: 4px;
@@ -116,7 +118,7 @@
   pointer-events: none;
 }
 
-.profile-card__status {
+.profile-component .profile-card__status {
   position: absolute;
   bottom: 8px;
   right: 8px;
@@ -124,14 +126,14 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: var(--bg-secondary);
+  background: var(--profile-bg-secondary);
   border-radius: 20px;
-  border: 1.5px solid var(--border-color);
+  border: 1.5px solid var(--profile-border-color);
   backdrop-filter: blur(10px);
-  transition: var(--transition-smooth);
+  transition: var(--profile-transition-smooth);
 }
 
-.profile-card__status-indicator {
+.profile-component .profile-card__status-indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -139,7 +141,7 @@
   position: relative;
 }
 
-.profile-card__status-indicator::after {
+.profile-component .profile-card__status-indicator::after {
   content: '';
   position: absolute;
   top: -2px;
@@ -149,44 +151,44 @@
   border-radius: 50%;
   background: #10b981;
   opacity: 0.4;
-  animation: pulse 2s infinite;
+  animation: profilePulse 2s infinite;
 }
 
-.profile-card__status[data-status="away"] .profile-card__status-indicator {
+.profile-component .profile-card__status[data-status="away"] .profile-card__status-indicator {
   background: #f59e0b;
 }
 
-.profile-card__status[data-status="away"] .profile-card__status-indicator::after {
+.profile-component .profile-card__status[data-status="away"] .profile-card__status-indicator::after {
   background: #f59e0b;
 }
 
-.profile-card__status[data-status="offline"] .profile-card__status-indicator {
+.profile-component .profile-card__status[data-status="offline"] .profile-card__status-indicator {
   background: #6b7280;
 }
 
-.profile-card__status[data-status="offline"] .profile-card__status-indicator::after {
+.profile-component .profile-card__status[data-status="offline"] .profile-card__status-indicator::after {
   background: #6b7280;
 }
 
-.profile-card__status-text {
+.profile-component .profile-card__status-text {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--profile-text-secondary);
 }
 
-.profile-card__info {
+.profile-component .profile-card__info {
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.profile-card__name {
+.profile-component .profile-card__name {
   font-size: 1.75rem;
   font-weight: 700;
   background: linear-gradient(135deg, 
-    var(--text-primary), 
-    var(--text-secondary));
+    var(--profile-text-primary), 
+    var(--profile-text-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -194,37 +196,37 @@
   letter-spacing: -0.025em;
 }
 
-.profile-card__title {
+.profile-component .profile-card__title {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: var(--profile-text-secondary);
   margin: 0;
   font-weight: 500;
 }
 
-.profile-card__handle {
+.profile-component .profile-card__handle {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: var(--text-muted);
+  color: var(--profile-text-muted);
   font-size: 0.875rem;
   font-weight: 500;
-  transition: var(--transition-smooth);
+  transition: var(--profile-transition-smooth);
 }
 
-.profile-card__handle-icon {
+.profile-component .profile-card__handle-icon {
   width: 16px;
   height: 16px;
 }
 
-.profile-card__contact-btn {
+.profile-component .profile-card__contact-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
   background: linear-gradient(135deg, 
-    var(--accent-primary), 
-    var(--accent-secondary));
+    var(--profile-accent-primary), 
+    var(--profile-accent-secondary));
   color: white;
   border: none;
   padding: 0.875rem 2rem;
@@ -232,14 +234,14 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: var(--profile-transition-smooth);
   position: relative;
   overflow: hidden;
   width: 100%;
   max-width: 280px;
 }
 
-.profile-card__contact-btn::before {
+.profile-component .profile-card__contact-btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -253,58 +255,58 @@
   transition: left 0.7s ease;
 }
 
-.profile-card__contact-btn:hover::before {
+.profile-component .profile-card__contact-btn:hover::before {
   left: 100%;
 }
 
-.profile-card__contact-btn:hover {
+.profile-component .profile-card__contact-btn:hover {
   transform: translateY(-2px);
   box-shadow: 
     0 10px 25px -5px rgba(99, 102, 241, 0.4),
     0 0 15px rgba(99, 102, 241, 0.3);
 }
 
-.profile-card__contact-icon {
+.profile-component .profile-card__contact-icon {
   width: 18px;
   height: 18px;
   transition: transform 0.3s ease;
 }
 
-.profile-card__contact-btn:hover .profile-card__contact-icon {
+.profile-component .profile-card__contact-btn:hover .profile-card__contact-icon {
   transform: translateY(2px);
 }
 
-.profile-card__stats {
+.profile-component .profile-card__stats {
   display: flex;
   justify-content: space-around;
   width: 100%;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--profile-border-color);
   margin-top: 0.5rem;
 }
 
-.profile-card__stat {
+.profile-component .profile-card__stat {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
 }
 
-.profile-card__stat-value {
+.profile-component .profile-card__stat-value {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--profile-text-primary);
 }
 
-.profile-card__stat-label {
+.profile-component .profile-card__stat-label {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--profile-text-muted);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
-@keyframes pulse {
+@keyframes profilePulse {
   0%, 100% {
     transform: scale(1);
     opacity: 0.4;
@@ -316,17 +318,17 @@
 }
 
 @media (max-width: 768px) {
-  .profile-card {
+  .profile-component.profile-card {
     padding: 1.5rem;
     max-width: 320px;
   }
   
-  .profile-card__avatar-container {
+  .profile-component .profile-card__avatar-container {
     width: 120px;
     height: 120px;
   }
   
-  .profile-card__name {
+  .profile-component .profile-card__name {
     font-size: 1.5rem;
   }
 }

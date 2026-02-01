@@ -3,28 +3,31 @@
 /* Import Professional Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-/* CSS Variables */
-.home-container {
-  --primary-color: #7cff67;
-  --primary-dark: #5227ff;
-  --accent-color: #00ff9d;
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.85);
-  --text-tertiary: rgba(255, 255, 255, 0.6);
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+/* CSS Variables - Unique to Home Component */
+.home-component {
+  --home-primary-color: #7cff67;
+  --home-primary-dark: #5227ff;
+  --home-accent-color: #00ff9d;
+  --home-text-primary: #ffffff;
+  --home-text-secondary: rgba(255, 255, 255, 0.85);
+  --home-text-tertiary: rgba(255, 255, 255, 0.6);
+  --home-glass-bg: rgba(255, 255, 255, 0.05);
+  --home-glass-border: rgba(255, 255, 255, 0.1);
+  --home-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Home Container */
+.home-component.home-container {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  color: var(--text-primary);
+  color: var(--home-text-primary);
   font-family: 'Inter', sans-serif;
 }
 
 /* Gradient Overlay */
-.gradient-overlay {
+.home-component .home-gradient-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(
@@ -37,7 +40,7 @@
 }
 
 /* Home Content */
-.home-content {
+.home-component .home-content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -52,31 +55,31 @@
 }
 
 /* Status Badge */
-.status-badge {
+.home-component .home-status-badge {
   position: absolute;
   top: 120px;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.5rem;
-  background: var(--glass-bg);
+  background: var(--home-glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--home-glass-border);
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--home-primary-color);
 }
 
-.status-dot {
+.home-component .home-status-dot {
   width: 8px;
   height: 8px;
-  background: var(--primary-color);
+  background: var(--home-primary-color);
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+  animation: homePulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes homePulse {
   0%, 100% { 
     opacity: 1;
     transform: scale(1);
@@ -88,89 +91,89 @@
 }
 
 /* Hero Content */
-.hero-content {
+.home-component .home-hero-content {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
 }
 
 /* Greeting Section */
-.greeting-section {
+.home-component .home-greeting-section {
   margin-bottom: 1.5rem;
 }
 
-.greeting {
+.home-component .home-greeting {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--home-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
 }
 
-.wave {
+.home-component .home-wave {
   display: inline-block;
-  animation: floatWave 3s ease-in-out infinite;
+  animation: homeFloatWave 3s ease-in-out infinite;
 }
 
-@keyframes floatWave {
+@keyframes homeFloatWave {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   25% { transform: translateY(-5px) rotate(10deg); }
   75% { transform: translateY(5px) rotate(-5deg); }
 }
 
 /* Title Section */
-.title-section {
+.home-component .home-title-section {
   margin-bottom: 3rem;
 }
 
-.title-wrapper {
+.home-component .home-title-wrapper {
   position: relative;
   display: inline-block;
   margin-bottom: 1rem;
 }
 
-.title-wrapper.typing::after {
+.home-component .home-title-wrapper.typing::after {
   content: '';
   position: absolute;
   top: 0;
   right: -10px;
   width: 2px;
   height: 100%;
-  background: var(--primary-color);
-  animation: cursorBlink 1s step-end infinite;
+  background: var(--home-primary-color);
+  animation: homeCursorBlink 1s step-end infinite;
 }
 
-.main-title {
+.home-component .home-main-title {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 700;
   line-height: 1.1;
-  background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary-color) 70%);
+  background: linear-gradient(135deg, var(--home-text-primary) 30%, var(--home-primary-color) 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1rem;
 }
 
-.tagline {
+.home-component .home-tagline {
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: var(--home-text-secondary);
   font-weight: 400;
   max-width: 600px;
   margin: 0 auto;
 }
 
-@keyframes cursorBlink {
+@keyframes homeCursorBlink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
 
 /* Action Buttons */
-.action-buttons {
+.home-component .home-action-buttons {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
@@ -178,7 +181,7 @@
   margin-top: 3rem;
 }
 
-.action-button {
+.home-component .home-action-button {
   position: relative;
   padding: 1rem 2rem;
   border-radius: 12px;
@@ -189,56 +192,56 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  transition: var(--transition);
+  transition: var(--home-transition);
   min-width: 160px;
   justify-content: center;
   overflow: hidden;
 }
 
-.action-button.primary {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+.home-component .home-primary-button {
+  background: linear-gradient(135deg, var(--home-primary-color), var(--home-primary-dark));
   color: #000;
 }
 
-.action-button.secondary {
+.home-component .home-secondary-button {
   background: transparent;
-  border: 1px solid var(--glass-border);
-  color: var(--text-primary);
+  border: 1px solid var(--home-glass-border);
+  color: var(--home-text-primary);
 }
 
-.action-button:hover {
+.home-component .home-action-button:hover {
   transform: translateY(-3px);
 }
 
-.action-button.primary:hover {
+.home-component .home-primary-button:hover {
   box-shadow: 0 10px 30px rgba(124, 255, 103, 0.3);
 }
 
-.action-button.secondary:hover {
+.home-component .home-secondary-button:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: var(--primary-color);
+  border-color: var(--home-primary-color);
 }
 
-.button-content {
+.home-component .home-button-content {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.button-icon {
+.home-component .home-button-icon {
   transition: transform 0.3s ease;
 }
 
-.action-button:hover .button-icon {
+.home-component .home-action-button:hover .home-button-icon {
   transform: translateX(5px);
 }
 
-.action-button.secondary:hover .button-icon {
+.home-component .home-secondary-button:hover .home-button-icon {
   transform: scale(1.2);
 }
 
 /* Scroll Indicator */
-.scroll-indicator {
+.home-component .home-scroll-indicator {
   position: absolute;
   bottom: 3rem;
   left: 50%;
@@ -250,38 +253,38 @@
   opacity: 0.7;
 }
 
-.indicator-line {
+.home-component .home-indicator-line {
   width: 2px;
   height: 50px;
   background: linear-gradient(
     to bottom,
     transparent,
-    var(--primary-color),
+    var(--home-primary-color),
     transparent
   );
   position: relative;
 }
 
-.indicator-dot {
+.home-component .home-indicator-dot {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 6px;
   height: 6px;
-  background: var(--primary-color);
+  background: var(--home-primary-color);
   border-radius: 50%;
-  animation: scrollIndicator 2s ease-in-out infinite;
+  animation: homeScrollIndicator 2s ease-in-out infinite;
 }
 
-.indicator-text {
+.home-component .home-indicator-text {
   font-size: 0.8rem;
-  color: var(--text-tertiary);
+  color: var(--home-text-tertiary);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-@keyframes scrollIndicator {
+@keyframes homeScrollIndicator {
   0% {
     top: 0;
     opacity: 1;
@@ -298,88 +301,88 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .home-content {
+  .home-component .home-content {
     padding: 0 1rem;
   }
   
-  .status-badge {
+  .home-component .home-status-badge {
     top: 100px;
     padding: 0.6rem 1.25rem;
     font-size: 0.85rem;
   }
   
-  .greeting {
+  .home-component .home-greeting {
     font-size: 1.5rem;
     flex-direction: column;
     gap: 0.5rem;
   }
   
-  .main-title {
+  .home-component .home-main-title {
     font-size: 2.5rem;
   }
   
-  .tagline {
+  .home-component .home-tagline {
     font-size: 1.2rem;
   }
   
-  .action-buttons {
+  .home-component .home-action-buttons {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
   
-  .action-button {
+  .home-component .home-action-button {
     width: 100%;
     max-width: 300px;
   }
 }
 
 @media (max-width: 480px) {
-  .status-badge {
+  .home-component .home-status-badge {
     top: 90px;
     padding: 0.5rem 1rem;
   }
   
-  .greeting {
+  .home-component .home-greeting {
     font-size: 1.3rem;
   }
   
-  .main-title {
+  .home-component .home-main-title {
     font-size: 2rem;
   }
   
-  .tagline {
+  .home-component .home-tagline {
     font-size: 1rem;
   }
   
-  .action-button {
+  .home-component .home-action-button {
     padding: 0.9rem 1.5rem;
   }
 }
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  .home-component *,
+  .home-component *::before,
+  .home-component *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
   
-  .wave {
+  .home-component .home-wave {
     animation: none;
   }
   
-  .status-dot {
+  .home-component .home-status-dot {
     animation: none;
   }
   
-  .indicator-dot {
+  .home-component .home-indicator-dot {
     animation: none;
   }
   
-  .title-wrapper.typing::after {
+  .home-component .home-title-wrapper.typing::after {
     animation: none;
     opacity: 1;
   }
