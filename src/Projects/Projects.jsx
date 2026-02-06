@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import './Projects.css';
+// import image1 from './Capture.png'
+// import image2 from './Capture1.png'
+// import image3 from './Capture3.png'
+
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -23,7 +27,7 @@ const Projects = () => {
       title: 'E-Commerce Platform',
       description: 'A full-stack e-commerce solution with real-time inventory management, payment integration, and admin dashboard.',
       category: 'web',
-      image: '', // Leave empty for user to fill
+      image: "/Capture.PNG",
       technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
@@ -40,7 +44,7 @@ const Projects = () => {
       title: 'AI Chatbot Assistant',
       description: 'Intelligent conversational AI using natural language processing for customer support automation.',
       category: 'ai',
-      image: '',
+      image: "/Capture1.PNG",
       technologies: ['Python', 'TensorFlow', 'FastAPI', 'React'],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
@@ -57,7 +61,7 @@ const Projects = () => {
       title: 'Task Management App',
       description: 'Collaborative project management tool with real-time updates, team chat, and analytics dashboard.',
       category: 'web',
-      image: '',
+      image: "/Capture2.jpg",
       technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Socket.io'],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
@@ -74,7 +78,7 @@ const Projects = () => {
       title: 'Fitness Tracking Mobile App',
       description: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics with AI-powered recommendations.',
       category: 'mobile',
-      image: '',
+      image: "/Capture3.jpeg",
       technologies: ['React Native', 'Firebase', 'TensorFlow Lite'],
       liveUrl: 'https://example.com',
       githubUrl: 'https://github.com',
