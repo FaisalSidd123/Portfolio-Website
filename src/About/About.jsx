@@ -108,10 +108,13 @@ const About = () => {
   };
 
   const handleDownloadCV = () => {
-    // Implement CV download logic
-    console.log('Downloading CV...');
-    // window.open('/path-to-cv.pdf', '_blank');
-  };
+  const link = document.createElement('a');
+  link.href = '/cv/faisal-cv.pdf';
+  link.download = 'Muhammad_Faisal_Siddique_CV.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   const handleViewPortfolio = () => {
     const projectsSection = document.getElementById('projects');
@@ -145,7 +148,7 @@ const About = () => {
           </p>
         </div>
 
-        {/* Stats
+        {/* Stats */}
         <div className="about-stats">
           {stats.map((stat, index) => (
             <div key={index} className="stat-card">
@@ -154,7 +157,7 @@ const About = () => {
               <div className="stat-label">{stat.label}</div>
             </div>
           ))}
-        </div> */}
+        </div>
 
         {/* Main Content Grid */}
         <div className="about-grid">

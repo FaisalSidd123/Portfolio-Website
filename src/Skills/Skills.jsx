@@ -220,11 +220,7 @@ const Skills = () => {
             >
               <span className="category-icon">{category.icon}</span>
               <span className="category-name">{category.name}</span>
-              <span className="category-count">
-                {category.id === 'all' 
-                  ? skillsData.length 
-                  : skillsData.filter(s => s.category === category.id).length}
-              </span>
+             
             </button>
           ))}
         </div>
@@ -234,7 +230,6 @@ const Skills = () => {
           <div className="grid-header">
             <h3 className="grid-title">
               {getCategoryData().name}
-              <span className="skill-count">{filteredSkills.length} {filteredSkills.length === 1 ? 'skill' : 'skills'}</span>
             </h3>
           </div>
 
@@ -272,37 +267,7 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* Stats */}
-        <div className="skills-stats">
-          <div className="stat-item">
-            <div className="stat-icon">💻</div>
-            <div className="stat-content">
-              <div className="stat-value">{skillsData.length}</div>
-              <div className="stat-label">Total Skills</div>
-            </div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">🎯</div>
-            <div className="stat-content">
-              <div className="stat-value">3</div>
-              <div className="stat-label">Core Languages</div>
-            </div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">🚀</div>
-            <div className="stat-content">
-              <div className="stat-value">5</div>
-              <div className="stat-label">Frameworks</div>
-            </div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">⚡</div>
-            <div className="stat-content">
-              <div className="stat-value">Always</div>
-              <div className="stat-label">Learning</div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

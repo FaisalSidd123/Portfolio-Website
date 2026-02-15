@@ -117,29 +117,9 @@
   margin-bottom: 1.5rem;
 }
 
-.home-component .home-greeting {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: 500;
-  color: var(--home-text-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-}
 
-.home-component .home-greeting-tag {
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: radial-gradient(circle at top left,
-    rgba(0, 255, 157, 0.12),
-    rgba(82, 39, 255, 0.16));
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--home-text-secondary);
-}
+
+
 
 .home-component .home-wave {
   display: inline-block;
@@ -175,7 +155,7 @@
 }
 
 .home-component .home-main-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'inter', sans-serif;
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 700;
   line-height: 1.1;
