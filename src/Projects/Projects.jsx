@@ -29,7 +29,7 @@ const Projects = () => {
       'A professional brand showcase website for OptiManage that highlights brand identity, services, vision, and complete contact information to establish a strong digital presence.',
     category: 'web',
     image: '/Capture.PNG',
-    technologies: ['React', 'CSS', 'JavaScript'],
+    technologies: ['React', 'CSS', 'JavaScript','EmailJs'],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com',
     featured: false,
@@ -49,7 +49,8 @@ const Projects = () => {
       'Express.js',
       'PostgreSQL',
       'Firebase',
-      'CSS'
+      'CSS',
+      'EmailJs',
     ],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com',
@@ -64,7 +65,15 @@ const Projects = () => {
       'A complete e-commerce website for the perfume brand DreamFragrance featuring product listings, cart, checkout, order management, and a dedicated admin portal for stock control and customer history.',
     category: 'web',
     image: '/Capture2.jpg',
-    technologies: ['React', 'Node.js', 'PostgreSQL'],
+    technologies: [
+      'React',
+      'Node.js',
+      'Express.js',
+      'PostgreSQL',
+      'Firebase',
+      'CSS',
+      'EmailJs',
+    ],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com',
     featured: false,
@@ -78,7 +87,7 @@ const Projects = () => {
       'A modern IT brand website for F&W Glitch that showcases technology services, expertise, and business solutions with a clean and responsive user interface.',
     category: 'web',
     image: '/Capture3.jpeg',
-    technologies: ['React', 'CSS', 'JavaScript'],
+    technologies: ['React', 'CSS', 'JavaScript','EmailJs'],
     liveUrl: 'https://example.com',
     githubUrl: 'https://github.com',
     featured: false,
@@ -308,29 +317,6 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Stats Summary */}
-        <div className="projects-summary">
-          <div className="summary-card">
-            <div className="summary-icon">📊</div>
-            <div className="summary-value">{projectsData.length}+</div>
-            <div className="summary-label">Total Projects</div>
-          </div>
-          <div className="summary-card">
-            <div className="summary-icon">💻</div>
-            <div className="summary-value">15+</div>
-            <div className="summary-label">Technologies Used</div>
-          </div>
-          <div className="summary-card">
-            <div className="summary-icon">⭐</div>
-            <div className="summary-value">{projectsData.filter(p => p.featured).length}</div>
-            <div className="summary-label">Featured Projects</div>
-          </div>
-          <div className="summary-card">
-            <div className="summary-icon">🚀</div>
-            <div className="summary-value">100%</div>
-            <div className="summary-label">Success Rate</div>
-          </div>
-        </div>
       </div>
 
       {/* Project Detail Modal */}

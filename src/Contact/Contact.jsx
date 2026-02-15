@@ -48,28 +48,22 @@ const Contact = () => {
     { 
       platform: 'LinkedIn', 
       handle: '@faisalsiddique', 
-      url: 'https://linkedin.com/in/faisalsiddique', 
+      url: 'https://www.linkedin.com/in/muhammad-faisal-74baa5297/', 
       icon: '💼',
       color: '#0077b5'
     },
     { 
       platform: 'GitHub', 
-      handle: '@faisalsiddique', 
-      url: 'https://github.com/faisalsiddique', 
+      handle: '@FaisalSidd123', 
+      url: 'https://github.com/FaisalSidd123', 
       icon: '💻',
       color: '#333'
     },
-    { 
-      platform: 'Twitter', 
-      handle: '@faisalsiddique', 
-      url: 'https://twitter.com/faisalsiddique', 
-      icon: '🐦',
-      color: '#1da1f2'
-    },
+  
     { 
       platform: 'Instagram', 
-      handle: '@faisalsiddique', 
-      url: 'https://instagram.com/faisalsiddique', 
+      handle: '@siddique3804', 
+      url: 'https://www.instagram.com/siddique3804/', 
       icon: '📸',
       color: '#e4405f'
     }
