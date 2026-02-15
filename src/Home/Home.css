@@ -58,6 +58,8 @@
 .home-component .home-status-badge {
   position: absolute;
   top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
@@ -69,6 +71,19 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--home-primary-color);
+}
+
+.home-component .home-status-pill {
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 255, 103, 0.35);
+  background: radial-gradient(circle at top left,
+    rgba(124, 255, 103, 0.18),
+    rgba(82, 39, 255, 0.15));
+  color: var(--home-text-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .home-component .home-status-dot {
@@ -111,6 +126,19 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
+}
+
+.home-component .home-greeting-tag {
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: radial-gradient(circle at top left,
+    rgba(0, 255, 157, 0.12),
+    rgba(82, 39, 255, 0.16));
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--home-text-secondary);
 }
 
 .home-component .home-wave {
@@ -165,6 +193,30 @@
   font-weight: 400;
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* Animated tagline: blur ➜ sharp reveal */
+.home-component .home-tagline-animated {
+  animation: homeTaglineReveal 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform-origin: center bottom;
+}
+
+@keyframes homeTaglineReveal {
+  0% {
+    opacity: 0;
+    filter: blur(16px);
+    transform: translateY(18px) scale(0.98);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(4px);
+    transform: translateY(4px) scale(1);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes homeCursorBlink {
@@ -310,6 +362,11 @@
     padding: 0.6rem 1.25rem;
     font-size: 0.85rem;
   }
+
+  .home-component .home-greeting-tag {
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+  }
   
   .home-component .home-greeting {
     font-size: 1.5rem;
@@ -385,5 +442,45 @@
   .home-component .home-title-wrapper.typing::after {
     animation: none;
     opacity: 1;
+  }
+}
+
+/* Hero Section Styling for Scroll Spy */
+.home-hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Ensure sections have proper spacing */
+#about,
+#skills,
+#education,
+#projects,
+#contact {
+  scroll-margin-top: 100px; /* Adjust based on your nav height */
+}
+
+/* Smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* For browsers that don't support smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

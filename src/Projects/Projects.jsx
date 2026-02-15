@@ -22,109 +22,70 @@ const Projects = () => {
   ];
 
   const projectsData = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with real-time inventory management, payment integration, and admin dashboard.',
-      category: 'web',
-      image: "/Capture.PNG",
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      featured: true,
-      color: '#6366f1',
-      stats: {
-        users: '1K+',
-        performance: '95%',
-        uptime: '99.9%'
-      }
-    },
-    {
-      id: 2,
-      title: 'AI Chatbot Assistant',
-      description: 'Intelligent conversational AI using natural language processing for customer support automation.',
-      category: 'ai',
-      image: "/Capture1.PNG",
-      technologies: ['Python', 'TensorFlow', 'FastAPI', 'React'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      featured: true,
-      color: '#8b5cf6',
-      stats: {
-        accuracy: '92%',
-        queries: '10K+',
-        languages: '5'
-      }
-    },
-    {
-      id: 3,
-      title: 'Task Management App',
-      description: 'Collaborative project management tool with real-time updates, team chat, and analytics dashboard.',
-      category: 'web',
-      image: "/Capture2.jpg",
-      technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Socket.io'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      featured: false,
-      color: '#d946ef',
-      stats: {
-        tasks: '5K+',
-        teams: '200+',
-        productivity: '+40%'
-      }
-    },
-    {
-      id: 4,
-      title: 'Fitness Tracking Mobile App',
-      description: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics with AI-powered recommendations.',
-      category: 'mobile',
-      image: "/Capture3.jpeg",
-      technologies: ['React Native', 'Firebase', 'TensorFlow Lite'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      featured: false,
-      color: '#10b981',
-      stats: {
-        downloads: '3K+',
-        workouts: '15K+',
-        rating: '4.8/5'
-      }
-    },
-    {
-      id: 5,
-      title: 'Portfolio Generator',
-      description: 'SaaS platform that auto-generates beautiful portfolio websites using AI-powered design suggestions.',
-      category: 'web',
-      image: '',
-      technologies: ['Vue.js', 'Express', 'OpenAI', 'Tailwind'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      featured: false,
-      color: '#f59e0b',
-      stats: {
-        portfolios: '800+',
-        templates: '50+',
-        satisfaction: '95%'
-      }
-    },
-    {
-      id: 6,
-      title: 'Real-Time Analytics Dashboard',
-      description: 'Business intelligence dashboard with live data visualization, custom reports, and predictive analytics.',
-      category: 'other',
-      image: '',
-      technologies: ['React', 'D3.js', 'Python', 'Redis'],
-      liveUrl: 'https://example.com',
-      githubUrl: 'https://github.com',
-      featured: true,
-      color: '#ec4899',
-      stats: {
-        data_points: '1M+',
-        charts: '25+',
-        speed: '0.5s'
-      }
-    }
-  ];
+  {
+    id: 1,
+    title: 'OptiManage – Brand Showcase Website',
+    description:
+      'A professional brand showcase website for OptiManage that highlights brand identity, services, vision, and complete contact information to establish a strong digital presence.',
+    category: 'web',
+    image: '/Capture.PNG',
+    technologies: ['React', 'CSS', 'JavaScript'],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+    featured: false,
+    color: '#6366f1',
+   
+  },
+  {
+    id: 2,
+    title: 'QuranVision – Islamic Learning & E-Commerce Platform',
+    description:
+      'An all-in-one Islamic platform similar to Islam360 where users can read, save, and organize Quranic verses and Hadith into custom collections, purchase books and learning plans, and engage through blogs with likes and comments. Includes a full admin portal for user activity and content management.',
+    category: 'web',
+    image: '/Capture1.PNG',
+    technologies: [
+      'React',
+      'Node.js',
+      'Express.js',
+      'PostgreSQL',
+      'Firebase',
+      'CSS'
+    ],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+    featured: false,
+    color: '#8b5cf6',
+   
+  },
+  {
+    id: 3,
+    title: 'DreamFragrance – E-Commerce Perfume Store',
+    description:
+      'A complete e-commerce website for the perfume brand DreamFragrance featuring product listings, cart, checkout, order management, and a dedicated admin portal for stock control and customer history.',
+    category: 'web',
+    image: '/Capture2.jpg',
+    technologies: ['React', 'Node.js', 'PostgreSQL'],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+    featured: false,
+    color: '#d946ef',
+   
+  },
+  {
+    id: 4,
+    title: 'F&W Glitch – IT Services Website',
+    description:
+      'A modern IT brand website for F&W Glitch that showcases technology services, expertise, and business solutions with a clean and responsive user interface.',
+    category: 'web',
+    image: '/Capture3.jpeg',
+    technologies: ['React', 'CSS', 'JavaScript'],
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com',
+    featured: false,
+    color: '#10b981',
+   
+  }
+];
 
   const filteredProjects = activeFilter === 'all' 
     ? projectsData 
@@ -330,7 +291,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Stats */}
+                {/* Stats
                 <div className="project-stats">
                   {Object.entries(project.stats).map(([key, value], i) => (
                     <div key={i} className="stat-item">
@@ -338,7 +299,7 @@ const Projects = () => {
                       <div className="stat-label">{key.replace('_', ' ')}</div>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
 
               {/* Card Accent Line */}
@@ -418,7 +379,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              <div className="modal-stats">
+              {/* <div className="modal-stats">
                 <h4 className="modal-section-title">Project Stats</h4>
                 <div className="stats-grid">
                   {Object.entries(selectedProject.stats).map(([key, value], i) => (
@@ -428,7 +389,7 @@ const Projects = () => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
 
               <div className="modal-actions">
                 <a 

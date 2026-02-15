@@ -1,0 +1,38 @@
+/* ===================================
+   GLOBAL THEME (unified across components)
+   =================================== */
+:root {
+  /* Primary palette - indigo/purple (main sections) */
+  --theme-primary: #6366f1;
+  --theme-secondary: #8b5cf6;
+  --theme-accent: #d946ef;
+  /* Hero/Nav accent - green (kept for nav/hero consistency) */
+  --theme-hero-primary: #7cff67;
+  --theme-hero-secondary: #00ff9d;
+  --theme-hero-dark: #5227FF;
+  /* Neutrals */
+  --theme-bg-dark: #0a0a0a;
+  --theme-bg-elevated: #0f0f0f;
+  --theme-border: rgba(255, 255, 255, 0.1);
+  --theme-text: #ffffff;
+  --theme-text-muted: rgba(255, 255, 255, 0.7);
+  --theme-text-dim: rgba(255, 255, 255, 0.5);
+  /* Typography */
+  --theme-font-display: 'Space Grotesk', sans-serif;
+  --theme-font-body: 'Inter', sans-serif;
+  --theme-radius: 12px;
+  --theme-radius-lg: 24px;
+  --theme-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global scroll behavior and section offsets for nav scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+[id="about"],
+[id="skills"],
+[id="projects"],
+[id="contact"] {
+  scroll-margin-top: 6rem;
+}

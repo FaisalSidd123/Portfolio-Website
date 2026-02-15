@@ -152,7 +152,7 @@
 }
 
 /* ===================================
-   FORM SECTION
+   FORM SECTION - FIXED
    =================================== */
 .contact-component .form-card {
   background: rgba(255, 255, 255, 0.03);
@@ -206,7 +206,7 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Form Fields */
+/* Form Fields - FIXED ALIGNMENT */
 .contact-component .form-fields {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -217,13 +217,18 @@
 .contact-component .form-field {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  min-height: 88px; /* Consistent minimum height for all fields */
+}
+
+.contact-component .form-field-half {
+  grid-column: span 1;
 }
 
 .contact-component .form-field-full {
-  grid-column: 1 / -1;
+  grid-column: span 2;
 }
 
+/* Fixed: Ensure all labels have consistent height */
 .contact-component .field-label {
   display: flex;
   align-items: center;
@@ -231,15 +236,23 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
+  height: 32px; /* Fixed height for consistent alignment */
+  margin-bottom: 0.25rem;
+}
+
+.contact-component .field-label-text {
+  flex: 1;
 }
 
 .contact-component .field-icon {
   font-size: 1.1rem;
+  width: 20px; /* Fixed width for consistent icon spacing */
+  text-align: center;
 }
 
 .contact-component .required {
   color: #d946ef;
-  margin-left: auto;
+  margin-left: 4px;
 }
 
 .contact-component .field-input,
@@ -253,6 +266,11 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.contact-component .field-input {
+  height: 48px; /* Fixed height for text inputs */
 }
 
 .contact-component .field-input:focus,
@@ -277,6 +295,18 @@
 .contact-component .field-textarea {
   resize: vertical;
   min-height: 120px;
+  line-height: 1.5;
+}
+
+/* Form Validation States */
+.contact-component .form-field.error .field-input,
+.contact-component .form-field.error .field-textarea {
+  border-color: #ef4444;
+}
+
+.contact-component .form-field.success .field-input,
+.contact-component .form-field.success .field-textarea {
+  border-color: #10b981;
 }
 
 /* Submit Button */
@@ -508,6 +538,7 @@
 
 .contact-component .method-content {
   flex: 1;
+  min-width: 0;
 }
 
 .contact-component .method-title {
@@ -525,6 +556,7 @@
 
 .contact-component .method-action {
   color: var(--method-color, #6366f1);
+  flex-shrink: 0;
 }
 
 /* Social Links */
@@ -554,6 +586,7 @@
 
 .contact-component .social-icon {
   font-size: 1.5rem;
+  flex-shrink: 0;
 }
 
 .contact-component .social-content {
@@ -566,6 +599,9 @@
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 0.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .contact-component .social-handle {
@@ -581,82 +617,8 @@
   flex-shrink: 0;
 }
 
-/* Availability */
-.contact-component .availability-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 50px;
-  margin-bottom: 1rem;
-}
-
-.contact-component .availability-dot {
-  width: 8px;
-  height: 8px;
-  background: #10b981;
-  border-radius: 50%;
-}
-
-.contact-component .availability-dot.pulse {
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-  }
-}
-
-.contact-component .availability-badge span {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #10b981;
-}
-
-.contact-component .availability-text {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.contact-component .availability-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.contact-component .stat-item {
-  text-align: center;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
-}
-
-.contact-component .stat-value {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.25rem;
-}
-
-.contact-component .stat-label {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-}
-
 /* ===================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN - IMPROVED
    =================================== */
 @media (max-width: 1024px) {
   .contact-component.contact-section {
@@ -679,6 +641,15 @@
     grid-template-columns: 1fr;
   }
 
+  .contact-component .form-field-half,
+  .contact-component .form-field-full {
+    grid-column: span 1;
+  }
+
+  .contact-component .form-field {
+    min-height: auto; /* Remove fixed height on mobile */
+  }
+
   .contact-component .social-grid {
     grid-template-columns: 1fr;
   }
@@ -686,6 +657,7 @@
   .contact-component .form-header {
     flex-direction: column;
     text-align: center;
+    align-items: center;
   }
 
   .contact-component .form-icon {
@@ -709,8 +681,9 @@
     padding: 1.25rem;
   }
 
-  .contact-component .availability-stats {
-    grid-template-columns: 1fr;
+  .contact-component .field-label {
+    height: auto; /* Flexible height on mobile */
+    flex-wrap: wrap;
   }
 }
 
@@ -732,4 +705,17 @@
 .contact-component .field-textarea:focus-visible {
   outline: 2px solid #6366f1;
   outline-offset: 2px;
+}
+
+/* Ensure form fields are properly aligned in all browsers */
+.contact-component .form-field * {
+  vertical-align: middle;
+}
+
+/* Fix for Safari input rendering */
+@supports (-webkit-overflow-scrolling: touch) {
+  .contact-component .field-input,
+  .contact-component .field-textarea {
+    font-size: 16px; /* Prevent zoom on focus in iOS Safari */
+  }
 }

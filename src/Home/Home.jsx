@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { useScrollSpy } from '../hooks/useScrollSpy'; // Import the hook
 import ModernNav from '../Nav/Nav';
 import Aurora from "../Background/Background";
 import './Home.css';
@@ -7,6 +8,15 @@ function HomePage() {
   const [textIndex, setTextIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const contentRef = useRef(null);
+
+  // Define your section IDs (must match the IDs in your components)
+  const sectionIds = ['hero', 'about', 'skills', 'education', 'projects', 'contact'];
+  
+  // Use the scroll spy hook
+  const activeSection = useScrollSpy(sectionIds, {
+    rootMargin: '-25% 0px -65% 0px',
+    threshold: 0.1
+  });
 
   const greetings = [
     "I'm Faisal Siddique",
@@ -37,10 +47,10 @@ function HomePage() {
     return () => {
       clearInterval(typewriterInterval);
     };
-  }, []);
+  }, [greetings.length]);
 
   const handleWorkClick = () => {
-    const workSection = document.getElementById('work');
+    const workSection = document.getElementById('projects');
     if (workSection) {
       workSection.scrollIntoView({ behavior: 'smooth' });
     }
@@ -65,78 +75,80 @@ function HomePage() {
       {/* Gradient Overlay */}
       <div className="home-gradient-overlay"></div>
       
-      {/* Navigation */}
+      {/* Navigation - Pass activeSection prop */}
       <ModernNav 
         name="FS"
         navItems={[
-          { label: 'Home', path: '/' },
-          { label: 'Work', path: '/work' },
-          { label: 'About', path: '/about' },
-          { label: 'Skills', path: '/skills' },
-          { label: 'Contact', path: '/contact' }
+          { label: 'Home', path: '/', sectionId: 'hero' },
+          { label: 'About', path: '#about', sectionId: 'about' },
+          { label: 'Skills', path: '#skills', sectionId: 'skills' },
+          { label: 'Education', path: '#education', sectionId: 'education' },
+          { label: 'Projects', path: '#projects', sectionId: 'projects' },
+          { label: 'Contact', path: '#contact', sectionId: 'contact' }
         ]}
+        activeSection={activeSection}
       />
       
-      {/* Main Content */}
-      <div className="home-content" ref={contentRef}>
-        {/* Status Badge (commented but kept for reference)
-        <div className="home-status-badge">
-          <div className="home-status-dot"></div>
-          <span>Available for projects</span>
-        </div> */}
+      {/* Main Content - Hero Section */}
+      <div id="hero" className="home-hero-section">
+        <div className="home-content" ref={contentRef}>
+          {/* Status / Availability Badge */}
+          <div className="home-status-badge">
+            <span className="home-status-dot" />
+            <span>Available for new opportunities</span>
+            <span className="home-status-pill">Portfolio · 2026</span>
+          </div>
 
-        {/* Hero Section */}
-        <div className="home-hero-content">
+          {/* Hero Section */}
+          <div className="home-hero-content">
+            {/* Greeting */}
           
-          {/* Greeting (commented but kept for reference)
-          <div className="home-greeting-section">
-            <h1 className="home-greeting">
-              Hi there, <span className="home-wave">👋</span>
-            </h1>
-          </div> */}
-
-          {/* Main Title */}
-          <div className="home-title-section">
-            <div className={`home-title-wrapper ${isTyping ? 'typing' : ''}`}>
-              <h2 className="home-main-title">
-                {greetings[textIndex]}
-                <span className="home-typing-cursor">|</span>
-              </h2>
+            {/* Main Title */}
+            <div className="home-title-section">
+              <div className={`home-title-wrapper ${isTyping ? 'typing' : ''}`}>
+                <h2 className="home-main-title">
+                  {greetings[textIndex]}
+                  <span className="home-typing-cursor">|</span>
+                </h2>
+              </div>
+              <p
+                key={textIndex}
+                className="home-tagline home-tagline-animated"
+              >
+                {taglines[textIndex]}
+              </p>
             </div>
-            <p className="home-tagline">
-              {taglines[textIndex]}
-            </p>
+
+            {/* CTA Buttons */}
+            <div className="home-action-buttons">
+              <button 
+                className="home-action-button home-primary-button" 
+                onClick={handleWorkClick}
+              >
+                <span className="home-button-content">
+                  <span className="home-button-text">View Projects</span>
+                  <span className="home-button-icon">↗</span>
+                </span>
+              </button>
+              <button 
+                className="home-action-button home-secondary-button" 
+                onClick={handleContactClick}
+              >
+                <span className="home-button-content">
+                  <span className="home-button-text">Get in Touch</span>
+                  <span className="home-button-icon">✉️</span>
+                </span>
+              </button>
+            </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="home-action-buttons">
-            <button 
-              className="home-action-button home-primary-button" 
-              onClick={handleWorkClick}
-            >
-              <span className="home-button-content">
-                <span className="home-button-text">View Projects</span>
-                <span className="home-button-icon">↗</span>
-              </span>
-            </button>
-            <button 
-              className="home-action-button home-secondary-button" 
-              onClick={handleContactClick}
-            >
-              <span className="home-button-content">
-                <span className="home-button-text">Get in Touch</span>
-                <span className="home-button-icon">✉️</span>
-              </span>
-            </button>
+          {/* Scroll Indicator */}
+          <div className="home-scroll-indicator">
+            <div className="home-indicator-line">
+              <div className="home-indicator-dot"></div>
+            </div>
+            <span className="home-indicator-text">Scroll</span>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="home-scroll-indicator">
-          <div className="home-indicator-line">
-            <div className="home-indicator-dot"></div>
-          </div>
-          <span className="home-indicator-text">Scroll</span>
         </div>
       </div>
     </div>

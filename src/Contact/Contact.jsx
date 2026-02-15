@@ -295,110 +295,115 @@ const Contact = () => {
           {/* Left Column - Contact Form */}
           <div className="contact-form-section">
             <div className="form-card">
-              <div className="form-header">
-                <div className="form-icon">💬</div>
+              <header className="form-header">
+                <div className="form-icon" aria-hidden="true">💬</div>
                 <div className="form-header-content">
                   <h3 className="form-title">Send a Message</h3>
                   <p className="form-subtitle">I typically respond within 24 hours</p>
                 </div>
-              </div>
+              </header>
 
-              <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
-                <div className="form-fields">
-                  <div 
-                    ref={el => fieldRefs.current[0] = el}
-                    className="form-field"
-                  >
-                    <label htmlFor="name" className="field-label">
-                      <span className="field-icon">👤</span>
-                      <span>Full Name</span>
-                      <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      onFocus={() => handleFieldFocus(0)}
-                      onBlur={() => handleFieldBlur(0)}
-                      className={`field-input ${activeField === 0 ? 'focused' : ''}`}
-                      placeholder="John Doe"
-                      required
-                      disabled={isSubmitting || isSubmitted}
-                    />
-                  </div>
+              <form ref={formRef} onSubmit={handleSubmit} className="contact-form" noValidate>
+                <div className="form-body">
+                  <div className="form-fields">
+                    <div
+                      ref={el => (fieldRefs.current[0] = el)}
+                      className="form-field form-field-half"
+                    >
+                      <label htmlFor="name" className="field-label">
+                        <span className="field-icon" aria-hidden="true">👤</span>
+                        <span className="field-label-text">Full Name</span>
+                        <span className="required" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        onFocus={() => handleFieldFocus(0)}
+                        onBlur={() => handleFieldBlur(0)}
+                        className={`field-input ${activeField === 0 ? 'focused' : ''}`}
+                        placeholder="John Doe"
+                        required
+                        disabled={isSubmitting || isSubmitted}
+                        autoComplete="name"
+                      />
+                    </div>
 
-                  <div 
-                    ref={el => fieldRefs.current[1] = el}
-                    className="form-field"
-                  >
-                    <label htmlFor="email" className="field-label">
-                      <span className="field-icon">✉️</span>
-                      <span>Email Address</span>
-                      <span className="required">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      onFocus={() => handleFieldFocus(1)}
-                      onBlur={() => handleFieldBlur(1)}
-                      className={`field-input ${activeField === 1 ? 'focused' : ''}`}
-                      placeholder="john@example.com"
-                      required
-                      disabled={isSubmitting || isSubmitted}
-                    />
-                  </div>
+                    <div
+                      ref={el => (fieldRefs.current[1] = el)}
+                      className="form-field form-field-half"
+                    >
+                      <label htmlFor="email" className="field-label">
+                        <span className="field-icon" aria-hidden="true">✉️</span>
+                        <span className="field-label-text">Email Address</span>
+                        <span className="required" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        onFocus={() => handleFieldFocus(1)}
+                        onBlur={() => handleFieldBlur(1)}
+                        className={`field-input ${activeField === 1 ? 'focused' : ''}`}
+                        placeholder="john@example.com"
+                        required
+                        disabled={isSubmitting || isSubmitted}
+                        autoComplete="email"
+                      />
+                    </div>
 
-                  <div 
-                    ref={el => fieldRefs.current[2] = el}
-                    className="form-field"
-                  >
-                    <label htmlFor="subject" className="field-label">
-                      <span className="field-icon">📌</span>
-                      <span>Subject</span>
-                      <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      onFocus={() => handleFieldFocus(2)}
-                      onBlur={() => handleFieldBlur(2)}
-                      className={`field-input ${activeField === 2 ? 'focused' : ''}`}
-                      placeholder="Project Inquiry"
-                      required
-                      disabled={isSubmitting || isSubmitted}
-                    />
-                  </div>
+                    <div
+                      ref={el => (fieldRefs.current[2] = el)}
+                      className="form-field form-field-full"
+                    >
+                      <label htmlFor="subject" className="field-label">
+                        <span className="field-icon" aria-hidden="true">📌</span>
+                        <span className="field-label-text">Subject</span>
+                        <span className="required" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        onFocus={() => handleFieldFocus(2)}
+                        onBlur={() => handleFieldBlur(2)}
+                        className={`field-input ${activeField === 2 ? 'focused' : ''}`}
+                        placeholder="Project Inquiry"
+                        required
+                        disabled={isSubmitting || isSubmitted}
+                        autoComplete="off"
+                      />
+                    </div>
 
-                  <div 
-                    ref={el => fieldRefs.current[3] = el}
-                    className="form-field form-field-full"
-                  >
-                    <label htmlFor="message" className="field-label">
-                      <span className="field-icon">💬</span>
-                      <span>Your Message</span>
-                      <span className="required">*</span>
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      onFocus={() => handleFieldFocus(3)}
-                      onBlur={() => handleFieldBlur(3)}
-                      className={`field-textarea ${activeField === 3 ? 'focused' : ''}`}
-                      placeholder="Tell me about your project, timeline, and any specific requirements..."
-                      rows="5"
-                      required
-                      disabled={isSubmitting || isSubmitted}
-                    />
+                    <div
+                      ref={el => (fieldRefs.current[3] = el)}
+                      className="form-field form-field-full"
+                    >
+                      <label htmlFor="message" className="field-label">
+                        <span className="field-icon" aria-hidden="true">💬</span>
+                        <span className="field-label-text">Your Message</span>
+                        <span className="required" aria-hidden="true">*</span>
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        onFocus={() => handleFieldFocus(3)}
+                        onBlur={() => handleFieldBlur(3)}
+                        className={`field-textarea ${activeField === 3 ? 'focused' : ''}`}
+                        placeholder="Tell me about your project, timeline, and any specific requirements..."
+                        rows="5"
+                        required
+                        disabled={isSubmitting || isSubmitted}
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -516,29 +521,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Availability */}
-              <div className="availability-card">
-                <div className="availability-header">
-                  <div className="availability-badge">
-                    <div className="availability-dot pulse"></div>
-                    <span>Available for Work</span>
-                  </div>
-                </div>
-                <p className="availability-text">
-                  I'm currently accepting select freelance opportunities and full-time positions. 
-                  Let's discuss how I can help bring your project to life.
-                </p>
-                <div className="availability-stats">
-                  <div className="stat-item">
-                    <div className="stat-value">24h</div>
-                    <div className="stat-label">Response Time</div>
-                  </div>
-                  <div className="stat-item">
-                    <div className="stat-value">100%</div>
-                    <div className="stat-label">Satisfaction</div>
-                  </div>
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
