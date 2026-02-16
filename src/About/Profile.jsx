@@ -5,7 +5,7 @@ const ProfileCard = ({
   name = "Javi A. Torres",
   title = "Software Engineer",
   handle = "javicodes",
-  status = "Online",
+  // status = "Online",
   contactText = "Contact Me",
   avatarUrl = "", // Will use default if empty
   showUserInfo = true,
@@ -78,10 +78,7 @@ const ProfileCard = ({
             <div className="profile-card__avatar-overlay"></div>
           </div>
           
-          <div className="profile-card__status" data-status={status.toLowerCase()}>
-            <div className="profile-card__status-indicator"></div>
-            <span className="profile-card__status-text">{status}</span>
-          </div>
+         
         </div>
 
         {showUserInfo && (
@@ -89,10 +86,7 @@ const ProfileCard = ({
             <h2 className="profile-card__name">{name}</h2>
             <p className="profile-card__title">{title}</p>
             <div className="profile-card__handle">
-              <svg className="profile-card__handle-icon" viewBox="0 0 24 24" fill="none">
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" 
-                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+             
               <span>@{handle}</span>
             </div>
           </div>
@@ -112,18 +106,29 @@ const ProfileCard = ({
           </svg>
         </button>
 
-        <div className="profile-card__stats">
+               <div className="profile-card__stats">
           <div className="profile-card__stat">
-            <span className="profile-card__stat-value">150+</span>
-            <span className="profile-card__stat-label">Projects</span>
+            <div className="profile-card__stat-icon">⚡</div>
+            <div className="profile-card__stat-content">
+              <span className="profile-card__stat-value">2+</span>
+              <span className="profile-card__stat-label">Years</span>
+            </div>
           </div>
+          <div className="profile-card__stat-divider"></div>
           <div className="profile-card__stat">
-            <span className="profile-card__stat-value">5★</span>
-            <span className="profile-card__stat-label">Rating</span>
+            <div className="profile-card__stat-icon">🚀</div>
+            <div className="profile-card__stat-content">
+              <span className="profile-card__stat-value">10+</span>
+              <span className="profile-card__stat-label">Projects</span>
+            </div>
           </div>
+          <div className="profile-card__stat-divider"></div>
           <div className="profile-card__stat">
-            <span className="profile-card__stat-value">98%</span>
-            <span className="profile-card__stat-label">Satisfaction</span>
+            <div className="profile-card__stat-icon">💼</div>
+            <div className="profile-card__stat-content">
+              <span className="profile-card__stat-value">100%</span>
+              <span className="profile-card__stat-label">Dedicated</span>
+            </div>
           </div>
         </div>
       </div>

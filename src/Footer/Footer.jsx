@@ -18,12 +18,12 @@ const Footer = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
-  const socialLinks = [
-    { name: 'GitHub', icon: '💻', url: 'https://github.com/faisalsiddique' },
-    { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com/in/faisalsiddique' },
-    { name: 'Twitter', icon: '🐦', url: 'https://twitter.com' },
-    { name: 'Email', icon: '✉️', url: 'mailto:faisalsiddique.129@gmail.com' }
-  ];
+const socialLinks = [
+  { name: 'GitHub', icon: <FaGithub />, url: 'https://github.com/FaisalSidd123' },
+  { name: 'LinkedIn', icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/muhammad-faisal-74baa5297/' },
+  { name: 'Email', icon: <FaEnvelope />, url: 'mailto:faisalsiddique.129@gmail.com' }
+];
+
 
   useEffect(() => {
     // Set initial visibility to prevent flashing

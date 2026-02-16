@@ -212,11 +212,7 @@ const About = () => {
                       backends, I bring ideas to life with clean code and innovative solutions.
                     </p>
                     
-                    <p>
-                      When I'm not coding, you'll find me exploring new technologies, contributing to 
-                      open-source projects, or sharing knowledge with the developer community. I believe 
-                      in continuous learning and staying ahead of the curve in this ever-evolving tech landscape.
-                    </p>
+                  
                   </div>
 
                   <div className="story-highlights">
@@ -340,7 +336,7 @@ const About = () => {
               <ProfileCard
                 name="Muhammad Faisal Siddique"
                 title="Full-Stack Developer & CS Student"
-                handle="@faisalsiddique"
+                handle="FaisalSidd123"
                 status="Available for work"
                 contactText="Let's Connect"
                 avatarUrl="./Photo.jpg"
