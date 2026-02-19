@@ -15,45 +15,41 @@ const About = () => {
     { label: 'Code Commits', value: '5K+', icon: '💻' }
   ];
 
-  const expertise = [
-    {
-      icon: '⚡',
-      title: 'Full-Stack Development',
-      description: 'Building end-to-end web applications with React, Node.js, and modern cloud technologies',
-      technologies: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'PostgreSQL']
-    },
-    {
-      icon: '🎨',
-      title: 'UI/UX Design',
-      description: 'Creating intuitive and beautiful interfaces that users love to interact with',
-      technologies: ['Figma', 'Tailwind CSS', 'Framer Motion', 'GSAP']
-    },
-    {
-      icon: '⚙️',
-      title: 'Performance Optimization',
-      description: 'Delivering lightning-fast applications with 98%+ Lighthouse scores',
-      technologies: ['Webpack', 'Vite', 'Next.js', 'PWA', 'Caching']
-    },
-    {
-      icon: '🤖',
-      title: 'AI Integration',
-      description: 'Implementing AI-powered features and intelligent automation',
-      technologies: ['OpenAI', 'TensorFlow', 'Python', 'FastAPI']
-    }
-  ];
-
   const journey = [
-    { year: '2022', title: 'Started Journey', desc: 'Began Computer Science at NED University' },
-    { year: '2023', title: 'First Project', desc: 'Built my first full-stack web application' },
-    { year: '2024', title: 'Freelancing', desc: 'Started working with clients worldwide' },
-    { year: '2025', title: 'Growing', desc: 'Expanding skills in AI and modern frameworks' }
+    { 
+      year: '2022', 
+      title: 'Started Journey', 
+      desc: 'Began Computer Science at NED University',
+      milestone: 'First Steps',
+      icon: '🌱'
+    },
+    { 
+      year: '2024', 
+      title: 'First Project', 
+      desc: 'Built my first full-stack web application',
+      milestone: 'First Win',
+      icon: '🏆'
+    },
+    { 
+      year: '2025', 
+      title: 'Freelancing', 
+      desc: 'Started working with clients Locally',
+      milestone: 'Growth',
+      icon: '🚀'
+    },
+    { 
+      year: '2026', 
+      title: 'Expanding Skills', 
+      desc: 'Exploring AI and modern frameworks',
+      milestone: 'Innovation',
+      icon: '💡'
+    }
   ];
 
   useEffect(() => {
     // Set initial visibility
     gsap.set('.about-section .about-header', { opacity: 1 });
     gsap.set('.about-section .stat-card', { opacity: 1 });
-    gsap.set('.about-section .expertise-card', { opacity: 1 });
     gsap.set('.about-section .about-profile', { opacity: 1 });
 
     // Entrance animations
@@ -84,17 +80,6 @@ const About = () => {
         clearProps: 'all'
       }, '-=0.6');
 
-    // Floating animation
-    gsap.to('.about-section .floating-element', {
-      y: 20,
-      rotation: 5,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut',
-      stagger: 0.3
-    });
-
     return () => {
       if (timelineRef.current) timelineRef.current.kill();
     };
@@ -108,13 +93,13 @@ const About = () => {
   };
 
   const handleDownloadCV = () => {
-  const link = document.createElement('a');
-  link.href = '/cv/faisal-cv.pdf';
-  link.download = 'Muhammad_Faisal_Siddique_CV.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+    const link = document.createElement('a');
+    link.href = '/cv/faisal-cv.pdf';
+    link.download = 'Muhammad_Faisal_Siddique_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const handleViewPortfolio = () => {
     const projectsSection = document.getElementById('projects');
@@ -148,17 +133,7 @@ const About = () => {
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="about-stats">
-          {stats.map((stat, index) => (
-            <div key={index} className="stat-card">
-              <div className="stat-icon">{stat.icon}</div>
-              <div className="stat-value">{stat.value}</div>
-              <div className="stat-label">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
+      
         {/* Main Content Grid */}
         <div className="about-grid">
           {/* Left Column - Content */}
@@ -171,13 +146,6 @@ const About = () => {
               >
                 <span className="tab-icon">📖</span>
                 <span>My Story</span>
-              </button>
-              <button
-                className={`tab-btn ${activeTab === 'expertise' ? 'active' : ''}`}
-                onClick={() => setActiveTab('expertise')}
-              >
-                <span className="tab-icon">💡</span>
-                <span>Expertise</span>
               </button>
               <button
                 className={`tab-btn ${activeTab === 'journey' ? 'active' : ''}`}
@@ -211,103 +179,53 @@ const About = () => {
                       but perform exceptionally. From crafting pixel-perfect UIs to architecting robust 
                       backends, I bring ideas to life with clean code and innovative solutions.
                     </p>
-                    
-                  
-                  </div>
-
-                  <div className="story-highlights">
-                    <div className="highlight-card">
-                      <div className="highlight-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className="highlight-content">
-                        <h4>Fast Learner</h4>
-                        <p>Quickly adapt to new technologies and frameworks</p>
-                      </div>
-                    </div>
-
-                    <div className="highlight-card">
-                      <div className="highlight-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className="highlight-content">
-                        <h4>Team Player</h4>
-                        <p>Collaborate effectively in diverse teams</p>
-                      </div>
-                    </div>
-
-                    <div className="highlight-card">
-                      <div className="highlight-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M22 4L12 14.01l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <div className="highlight-content">
-                        <h4>Detail-Oriented</h4>
-                        <p>Meticulous attention to code quality and UX</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               )}
 
-              {/* Expertise Tab */}
-              {activeTab === 'expertise' && (
-                <div className="expertise-content">
-                  <h3 className="content-title">
-                    What I Bring to the <span className="gradient-text">Table</span>
-                  </h3>
-                  
-                  <div className="expertise-grid">
-                    {expertise.map((item, index) => (
-                      <div key={index} className="expertise-card">
-                        <div className="expertise-icon">{item.icon}</div>
-                        <h4 className="expertise-title">{item.title}</h4>
-                        <p className="expertise-description">{item.description}</p>
-                        <div className="expertise-tech">
-                          {item.technologies.map((tech, i) => (
-                            <span key={i} className="tech-pill">{tech}</span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Journey Tab */}
+              {/* Journey Tab - Improved Timeline */}
               {activeTab === 'journey' && (
                 <div className="journey-content">
                   <h3 className="content-title">
                     My <span className="gradient-text">Development Journey</span>
                   </h3>
                   
-                  <div className="journey-timeline">
+                  <div className="journey-timeline-modern">
                     {journey.map((item, index) => (
-                      <div key={index} className="journey-item">
-                        <div className="journey-year">{item.year}</div>
-                        <div className="journey-dot"></div>
-                        <div className="journey-details">
-                          <h4 className="journey-title">{item.title}</h4>
-                          <p className="journey-desc">{item.desc}</p>
+                      <div key={index} className="journey-card">
+                        <div className="journey-card-left">
+                          <div className="journey-year-badge">
+                            <span className="journey-year-number">{item.year}</span>
+                          </div>
+                          <div className="journey-icon">{item.icon}</div>
                         </div>
+                        
+                        <div className="journey-card-content">
+                          <div className="journey-header">
+                            <h4 className="journey-title">{item.title}</h4>
+                            <span className="journey-milestone" style={{ '--milestone-color': `hsl(${index * 30}, 70%, 60%)` }}>
+                              {item.milestone}
+                            </span>
+                          </div>
+                          <p className="journey-desc">{item.desc}</p>
+                          
+                          {/* Progress indicator for last item */}
+                          {index === journey.length - 1 && (
+                            <div className="journey-current">
+                              <span className="current-dot"></span>
+                              <span className="current-text">Currently here</span>
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Connector line (except last) */}
+                        {index < journey.length - 1 && (
+                          <div className="journey-connector">
+                            <div className="connector-line"></div>
+                          </div>
+                        )}
                       </div>
                     ))}
-                  </div>
-
-                  <div className="journey-quote">
-                    <div className="quote-icon">"</div>
-                    <p className="quote-text">
-                      Every line of code is a step forward in my journey. Every project is a lesson learned. 
-                      Every challenge is an opportunity to grow.
-                    </p>
-                    <div className="quote-author">- Muhammad Faisal Siddique</div>
                   </div>
                 </div>
               )}

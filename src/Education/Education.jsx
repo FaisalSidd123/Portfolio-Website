@@ -54,7 +54,7 @@ const Education = () => {
         'Building real-world projects and applications'
       ],
       status: 'current',
-      gpa: 'CGPA: 3.5/4.0',
+      gpa: 'CGPA: 3.2/4.0',
       highlight: true
     }
   ];
@@ -234,29 +234,8 @@ const Education = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="education-stats">
-          <div className="stat-item">
-            <div className="stat-icon">🎓</div>
-            <div className="stat-value">3</div>
-            <div className="stat-label">Educational Milestones</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">📚</div>
-            <div className="stat-value">7+</div>
-            <div className="stat-label">Years of Learning</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">🏆</div>
-            <div className="stat-value">4+</div>
-            <div className="stat-label">Years in CS</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-icon">💻</div>
-            <div className="stat-value">2026</div>
-            <div className="stat-label">Expected Graduation</div>
-          </div>
-        </div>
+        
+        
       </div>
     </section>
   );
