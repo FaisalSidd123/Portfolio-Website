@@ -108,7 +108,7 @@ function HomePage() {
               <div className={`home-title-wrapper ${isTyping ? 'typing' : ''}`}>
                 <h2 className="home-main-title">
                   {greetings[textIndex]}
-                  <span className="home-typing-cursor">|</span>
+                  {/* <span className="home-typing-cursor">|</span> */}
                 </h2>
               </div>
               <p

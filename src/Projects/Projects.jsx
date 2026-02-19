@@ -300,15 +300,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Stats
-                <div className="project-stats">
-                  {Object.entries(project.stats).map(([key, value], i) => (
-                    <div key={i} className="stat-item">
-                      <div className="stat-value" style={{ color: project.color }}>{value}</div>
-                      <div className="stat-label">{key.replace('_', ' ')}</div>
-                    </div>
-                  ))}
-                </div> */}
+               
               </div>
 
               {/* Card Accent Line */}
@@ -365,17 +357,7 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* <div className="modal-stats">
-                <h4 className="modal-section-title">Project Stats</h4>
-                <div className="stats-grid">
-                  {Object.entries(selectedProject.stats).map(([key, value], i) => (
-                    <div key={i} className="modal-stat">
-                      <div className="modal-stat-value" style={{ color: selectedProject.color }}>{value}</div>
-                      <div className="modal-stat-label">{key.replace('_', ' ')}</div>
-                    </div>
-                  ))}
-                </div>
-              </div> */}
+              
 
               <div className="modal-actions">
                 <a 

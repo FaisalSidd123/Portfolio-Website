@@ -28,7 +28,7 @@
 }
 
 /* Gradient Overlay */
-.home-component .home-gradient-overlay {
+/* .home-component .home-gradient-overlay {
   position: absolute;
   inset: 0;
   background: radial-gradient(
@@ -38,7 +38,7 @@
   );
   z-index: 1;
   pointer-events: none;
-}
+} */
 
 /* Home Content */
 .home-component .home-content {
