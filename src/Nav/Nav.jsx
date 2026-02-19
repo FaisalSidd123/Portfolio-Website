@@ -172,7 +172,7 @@ const ModernNav = ({
     <>
       <nav 
         ref={navRef}
-        className={`modern-nav ${scrolled ? 'scrolled' : ''}`}
+        className={`modern-nav ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}
       >
         <div className="nav-container">
           {/* Logo with Unique Design */}
@@ -336,17 +336,7 @@ const ModernNav = ({
 
           {/* Mobile Footer */}
           <div className="mobile-footer">
-            <a 
-              href="#contact" 
-              className="mobile-cta"
-              onClick={(e) => {
-                e.preventDefault();
-                handleItemClick('#contact', 'contact');
-              }}
-            >
-              <span>Start a Project</span>
-              <span className="mobile-cta-glow"></span>
-            </a>
+           
             
             <div className="mobile-socials">
               <a href="https://github.com/faisalsiddique" target="_blank" rel="noopener noreferrer">
