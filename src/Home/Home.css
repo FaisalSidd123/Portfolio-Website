@@ -1,432 +1,50 @@
-/* Home.css - Clean 100vh Portfolio Homepage */
+/* ============================================================
+   HOME — aurora dark portfolio hero
+   All classes prefixed: home-
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap');
 
-/* Import Professional Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
-
-/* CSS Variables - Unique to Home Component */
+/* ── Design tokens ── */
 .home-component {
-  --home-primary-color: #7cff67;
-  --home-primary-dark: #5227ff;
-  --home-accent-color: #00ff9d;
-  --home-text-primary: #ffffff;
-  --home-text-secondary: rgba(255, 255, 255, 0.85);
-  --home-text-tertiary: rgba(255, 255, 255, 0.6);
-  --home-glass-bg: rgba(255, 255, 255, 0.05);
-  --home-glass-border: rgba(255, 255, 255, 0.1);
-  --home-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --home-green:         #7cff67;
+  --home-green-dim:     rgba(124, 255, 103, 0.18);
+  --home-green-glow:    rgba(124, 255, 103, 0.35);
+  --home-purple:        #5227ff;
+  --home-purple-dim:    rgba(82, 39, 255, 0.18);
+  --home-teal:          #00ff9d;
+  --home-text:          #ffffff;
+  --home-text-sub:      rgba(255, 255, 255, 0.75);
+  --home-text-dim:      rgba(255, 255, 255, 0.45);
+  --home-glass:         rgba(255, 255, 255, 0.05);
+  --home-glass-border:  rgba(255, 255, 255, 0.1);
+  --home-ease:          cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Home Container */
+/* ── Container ── */
 .home-component.home-container {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  color: var(--home-text-primary);
+  color: var(--home-text);
   font-family: 'Poppins', sans-serif;
 }
 
-/* Gradient Overlay */
-/* .home-component .home-gradient-overlay {
+/* ── Gradient overlay ── */
+.home-component .home-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at 50% 50%,
-    transparent 0%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
-  z-index: 1;
-  pointer-events: none;
-} */
-
-/* Home Content */
-.home-component .home-content {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Status Badge */
-.home-component .home-status-badge {
-  position: absolute;
-  top: 120px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--home-glass-bg);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--home-glass-border);
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--home-primary-color);
-}
-
-.home-component .home-status-pill {
-  padding: 0.2rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(124, 255, 103, 0.35);
-  background: radial-gradient(circle at top left,
-    rgba(124, 255, 103, 0.18),
-    rgba(82, 39, 255, 0.15));
-  color: var(--home-text-primary);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.home-component .home-status-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--home-primary-color);
-  border-radius: 50%;
-  animation: homePulse 2s ease-in-out infinite;
-}
-
-@keyframes homePulse {
-  0%, 100% { 
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 0.5;
-    transform: scale(1.2);
-  }
-}
-
-/* Hero Content */
-.home-component .home-hero-content {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Greeting Section */
-.home-component .home-greeting-section {
-  margin-bottom: 1.5rem;
-}
-
-
-
-
-
-.home-component .home-wave {
-  display: inline-block;
-  animation: homeFloatWave 3s ease-in-out infinite;
-}
-
-@keyframes homeFloatWave {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-5px) rotate(10deg); }
-  75% { transform: translateY(5px) rotate(-5deg); }
-}
-
-/* Title Section */
-.home-component .home-title-section {
-  margin-bottom: 3rem;
-}
-
-.home-component .home-title-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 1rem;
-}
-
-.home-component .home-title-wrapper.typing::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: -10px;
-  width: 2px;
-  height: 100%;
-  background: var(--home-primary-color);
-  animation: homeCursorBlink 1s step-end infinite;
-}
-
-.home-component .home-main-title {
-  font-family: 'Poppins', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  background: linear-gradient(135deg, var(--home-text-primary) 30%, var(--home-primary-color) 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-}
-
-.home-component .home-tagline {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  line-height: 1.6;
-  color: var(--home-text-secondary);
-  font-weight: 400;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Animated tagline: blur ➜ sharp reveal */
-.home-component .home-tagline-animated {
-  animation: homeTaglineReveal 0.9s cubic-bezier(0.22, 0.61, 0.36, 1);
-  transform-origin: center bottom;
-}
-
-@keyframes homeTaglineReveal {
-  0% {
-    opacity: 0;
-    filter: blur(16px);
-    transform: translateY(18px) scale(0.98);
-  }
-  60% {
-    opacity: 1;
-    filter: blur(4px);
-    transform: translateY(4px) scale(1);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes homeCursorBlink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-/* Action Buttons */
-.home-component .home-action-buttons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-}
-
-.home-component .home-action-button {
-  position: relative;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  transition: var(--home-transition);
-  min-width: 160px;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.home-component .home-primary-button {
-  background: linear-gradient(135deg, var(--home-primary-color), var(--home-primary-dark));
-  color: #000;
-}
-
-.home-component .home-secondary-button {
-  background: transparent;
-  border: 1px solid var(--home-glass-border);
-  color: var(--home-text-primary);
-}
-
-.home-component .home-action-button:hover {
-  transform: translateY(-3px);
-}
-
-.home-component .home-primary-button:hover {
-  box-shadow: 0 10px 30px rgba(124, 255, 103, 0.3);
-}
-
-.home-component .home-secondary-button:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--home-primary-color);
-}
-
-.home-component .home-button-content {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.home-component .home-button-icon {
-  transition: transform 0.3s ease;
-}
-
-.home-component .home-action-button:hover .home-button-icon {
-  transform: translateX(5px);
-}
-
-.home-component .home-secondary-button:hover .home-button-icon {
-  transform: scale(1.2);
-}
-
-/* Scroll Indicator */
-.home-component .home-scroll-indicator {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0.7;
-}
-
-.home-component .home-indicator-line {
-  width: 2px;
-  height: 50px;
   background: linear-gradient(
     to bottom,
-    transparent,
-    var(--home-primary-color),
-    transparent
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.05) 50%,
+    rgba(0,0,0,0.4)  100%
   );
-  position: relative;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.home-component .home-indicator-dot {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background: var(--home-primary-color);
-  border-radius: 50%;
-  animation: homeScrollIndicator 2s ease-in-out infinite;
-}
-
-.home-component .home-indicator-text {
-  font-size: 0.8rem;
-  color: var(--home-text-tertiary);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-@keyframes homeScrollIndicator {
-  0% {
-    top: 0;
-    opacity: 1;
-  }
-  70% {
-    top: 50px;
-    opacity: 0;
-  }
-  100% {
-    top: 0;
-    opacity: 0;
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .home-component .home-content {
-    padding: 0 1rem;
-  }
-  
-  .home-component .home-status-badge {
-    top: 100px;
-    padding: 0.6rem 1.25rem;
-    font-size: 0.85rem;
-  }
-
-  .home-component .home-greeting-tag {
-    padding: 0.3rem 0.75rem;
-    font-size: 0.75rem;
-  }
-  
-  .home-component .home-greeting {
-    font-size: 1.5rem;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .home-component .home-main-title {
-    font-size: 2.5rem;
-  }
-  
-  .home-component .home-tagline {
-    font-size: 1.2rem;
-  }
-  
-  .home-component .home-action-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .home-component .home-action-button {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 480px) {
-  .home-component .home-status-badge {
-    top: 90px;
-    padding: 0.5rem 1rem;
-  }
-  
-  .home-component .home-greeting {
-    font-size: 1.3rem;
-  }
-  
-  .home-component .home-main-title {
-    font-size: 2rem;
-  }
-  
-  .home-component .home-tagline {
-    font-size: 1rem;
-  }
-  
-  .home-component .home-action-button {
-    padding: 0.9rem 1.5rem;
-  }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  .home-component *,
-  .home-component *::before,
-  .home-component *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .home-component .home-wave {
-    animation: none;
-  }
-  
-  .home-component .home-status-dot {
-    animation: none;
-  }
-  
-  .home-component .home-indicator-dot {
-    animation: none;
-  }
-  
-  .home-component .home-title-wrapper.typing::after {
-    animation: none;
-    opacity: 1;
-  }
-}
-
-/* Hero Section Styling for Scroll Spy */
+/* ── Hero section ── */
 .home-hero-section {
   position: relative;
   min-height: 100vh;
@@ -436,32 +54,614 @@
   z-index: 1;
 }
 
-.home-content {
+/* ── Content centring ── */
+.home-component .home-content {
   position: relative;
   z-index: 2;
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-/* Ensure sections have proper spacing */
-#about,
-#skills,
-#education,
-#projects,
-#contact {
-  scroll-margin-top: 100px; /* Adjust based on your nav height */
+/* ============================================================
+   STATUS BADGE — fully responsive
+   ============================================================ */
+.home-component .home-status-badge {
+  position: absolute;
+  top: clamp(80px, 13vh, 130px);
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  padding: clamp(0.45rem, 1.5vw, 0.75rem) clamp(0.9rem, 3vw, 1.5rem);
+
+  background: var(--home-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--home-glass-border);
+  border-radius: 50px;
+
+  font-size: clamp(0.72rem, 2vw, 0.9rem);
+  font-weight: 500;
+  color: var(--home-green);
+
+  white-space: nowrap;
+  max-width: calc(100vw - 2rem);
+  box-sizing: border-box;
+
+  animation: homeSlideDown 0.7s var(--home-ease) both;
+  margin-top: 1rem;
 }
 
-/* Smooth scrolling behavior */
-html {
-  scroll-behavior: smooth;
+@keyframes homeSlideDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-14px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* For browsers that don't support smooth scrolling */
+.home-component .home-status-dot {
+  flex-shrink: 0;
+  width: clamp(6px, 1.5vw, 8px);
+  height: clamp(6px, 1.5vw, 8px);
+  background: var(--home-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--home-green);
+  animation: homePulse 2.2s ease-in-out infinite;
+}
+
+.home-component .home-status-pill {
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 255, 103, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(124, 255, 103, 0.12),
+    rgba(82, 39, 255, 0.1)
+  );
+  color: rgba(255,255,255,0.85);
+  font-size: clamp(0.62rem, 1.6vw, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+@keyframes homePulse {
+  0%, 100% { opacity: 1; transform: scale(1);   box-shadow: 0 0 6px var(--home-green); }
+  50%       { opacity: 0.6; transform: scale(1.3); box-shadow: 0 0 14px var(--home-green); }
+}
+
+/* ============================================================
+   HERO COPY
+   ============================================================ */
+.home-component .home-hero-content {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.home-component .home-title-section {
+  margin-bottom: 2.75rem;
+}
+
+.home-component .home-title-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.1rem;
+}
+
+/* Blinking cursor when typing */
+.home-component .home-title-wrapper.typing::after {
+  content: '';
+  position: absolute;
+  top: 8%;
+  right: -12px;
+  width: 3px;
+  height: 84%;
+  border-radius: 2px;
+  background: var(--home-green);
+  animation: homeCursorBlink 1s step-end infinite;
+}
+
+.home-component .home-main-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    #ffffff 25%,
+    var(--home-green) 60%,
+    var(--home-teal) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.home-component .home-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--home-text-sub);
+  max-width: 580px;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+}
+
+.home-component .home-tagline-animated {
+  animation: homeTaglineReveal 0.85s var(--home-ease) both;
+}
+
+@keyframes homeTaglineReveal {
+  from { opacity: 0; filter: blur(14px); transform: translateY(16px); }
+  to   { opacity: 1; filter: blur(0);    transform: translateY(0); }
+}
+
+@keyframes homeCursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   BUTTONS — premium redesign with enhanced animations
+   ============================================================ */
+.home-component .home-action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Shared base ── */
+.home-component .home-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  min-width: 168px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.4s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-component .home-btn:focus-visible {
+  outline: 2px solid var(--home-green);
+  outline-offset: 3px;
+}
+
+.home-component .home-btn:active {
+  transform: scale(0.96) !important;
+  transition: transform 0.1s ease;
+}
+
+/* Inner content row */
+.home-component .home-btn-inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.85rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.home-component .home-btn-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+/* Icon animations */
+.home-component .home-btn-icon {
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.home-component .home-btn-primary .home-btn-icon svg {
+  stroke: #000;
+  transition: stroke 0.3s ease;
+}
+
+.home-component .home-btn-secondary .home-btn-icon svg {
+  stroke: var(--home-text);
+  transition: stroke 0.3s ease, transform 0.3s ease;
+}
+
+/* ─────────────────────────────────────────
+   PRIMARY BUTTON — green→purple gradient
+   with enhanced animations
+───────────────────────────────────────── */
+.home-component .home-btn-primary {
+  background: transparent;
+  color: #000;
+}
+
+/* Animated gradient background */
+.home-component .home-btn-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    130deg,
+    var(--home-green) 0%,
+    var(--home-teal) 45%,
+    var(--home-purple) 100%
+  );
+  background-size: 150% 150%;
+  background-position: 0% 0%;
+  transition: background-position 0.6s ease, opacity 0.4s ease;
+  z-index: 0;
+}
+
+.home-component .home-btn-primary:hover .home-btn-bg {
+  background-position: 100% 100%;
+}
+
+/* Shimmer overlay - improved */
+.home-component .home-btn-shimmer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 55%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  transition: background-position 0.8s ease;
+  z-index: 1;
+  opacity: 0;
+}
+
+.home-component .home-btn-primary:hover .home-btn-shimmer {
+  background-position: 200% 0;
+  opacity: 1;
+}
+
+/* Hover effects */
+.home-component .home-btn-primary:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 0 0 2px rgba(124, 255, 103, 0.4),
+    0 10px 30px rgba(124, 255, 103, 0.3),
+    0 20px 50px rgba(82, 39, 255, 0.25);
+}
+
+.home-component .home-btn-primary:hover .home-btn-icon {
+  transform: translate(6px, -4px) scale(1.1);
+}
+
+.home-component .home-btn-primary:hover .home-btn-icon svg {
+  stroke: #000;
+}
+
+/* Ripple effect */
+.home-component .home-btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.home-component .home-btn-primary:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+/* ─────────────────────────────────────────
+   SECONDARY BUTTON — glass + animated
+   gradient border with enhanced effects
+───────────────────────────────────────── */
+.home-component .home-btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--home-text);
+  border: 1px solid transparent;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+/* Gradient border animation */
+.home-component .home-btn-border {
+  position: absolute;
+  inset: -1px;
+  border-radius: 15px;
+  padding: 1px;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(124, 255, 103, 0.3),
+    rgba(82, 39, 255, 0.3),
+    rgba(0, 255, 157, 0.3)
+  );
+  background-size: 300% 300%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: background 0.6s ease, background-position 0.8s ease;
+  z-index: 0;
+  animation: borderRotate 6s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Inner glow */
+.home-component .home-btn-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(124, 255, 103, 0.2),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+/* Hover effects */
+.home-component .home-btn-secondary:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 0 0 1px rgba(124, 255, 103, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 20px 40px rgba(82, 39, 255, 0.15);
+}
+
+.home-component .home-btn-secondary:hover::before {
+  opacity: 1;
+}
+
+.home-component .home-btn-secondary:hover .home-btn-border {
+  background: linear-gradient(
+    130deg,
+    var(--home-green),
+    var(--home-purple),
+    var(--home-teal),
+    var(--home-green)
+  );
+  background-size: 300% 300%;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 200%; }
+}
+
+.home-component .home-btn-secondary:hover .home-btn-icon {
+  transform: translateX(5px) scale(1.15);
+  animation: iconBounce 1s ease infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateX(5px) scale(1.15); }
+  50% { transform: translateX(8px) scale(1.2); }
+}
+
+.home-component .home-btn-secondary:hover .home-btn-icon svg {
+  stroke: var(--home-green);
+}
+
+/* Particle effects on hover */
+.home-component .home-btn-secondary .home-btn-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.home-component .home-btn-secondary .home-btn-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--home-green);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-component .home-btn-secondary:hover .home-btn-particle {
+  animation: particleFly 1s ease-out forwards;
+}
+
+@keyframes particleFly {
+  0% {
+    opacity: 0.5;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x, 30px), var(--y, -30px)) scale(0);
+  }
+}
+
+/* Responsive button adjustments */
+@media (max-width: 768px) {
+  .home-component .home-action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .home-component .home-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .home-component .home-btn:hover {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+/* ============================================================
+   SCROLL INDICATOR
+   ============================================================ */
+.home-component .home-scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.55;
+  animation: homeFadeIn 1.2s 1s var(--home-ease) both;
+}
+
+@keyframes homeFadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to   { opacity: 0.55; transform: translateX(-50%) translateY(0); }
+}
+
+.home-component .home-indicator-line {
+  width: 1.5px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--home-green), transparent);
+  position: relative;
+}
+
+.home-component .home-indicator-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: var(--home-green);
+  border-radius: 50%;
+  animation: homeScrollDot 2s ease-in-out infinite;
+}
+
+.home-component .home-indicator-text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--home-text-dim);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@keyframes homeScrollDot {
+  0%   { top: 0;    opacity: 1; }
+  70%  { top: 42px; opacity: 0; }
+  100% { top: 0;    opacity: 0; }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .home-component .home-content {
+    padding: 0 1.25rem;
+  }
+
+  .home-component .home-btn-inner {
+    padding: 0.85rem 1.6rem;
+  }
+  
+  .home-component .home-btn-text {
+    font-size: 0.92rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 420px) {
+  .home-component .home-status-label {
+    font-size: 0;
+  }
+  .home-component .home-status-label::after {
+    content: 'Open to Work';
+    font-size: clamp(0.68rem, 4vw, 0.8rem);
+  }
+
+  .home-component .home-btn-inner {
+    padding: 0.82rem 1.4rem;
+  }
+
+  .home-component .home-btn-text {
+    font-size: 0.88rem;
+  }
+  
+  .home-component .home-btn {
+    min-width: 140px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .home-component .home-action-buttons {
+    gap: 1.25rem;
+  }
+  .home-component .home-btn {
+    min-width: 190px;
+  }
+}
+
+/* ============================================================
+   SCROLL MARGIN — navigation offset
+   ============================================================ */
+#about, #skills, #education, #projects, #contact {
+  scroll-margin-top: 90px;
+}
+
+html { scroll-behavior: smooth; }
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  html { scroll-behavior: auto; }
+
+  .home-component *,
+  .home-component *::before,
+  .home-component *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
