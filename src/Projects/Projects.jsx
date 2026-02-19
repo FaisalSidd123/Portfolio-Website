@@ -35,7 +35,7 @@ const Projects = () => {
       technologies: ['React', 'Node.js', 'Express.js', 'PostgreSQL', 'Firebase'],
       githubUrl: 'https://github.com',
       featured: false,
-      color: '#7cff67',
+      color: '#5227ff',
     },
     {
       id: 3,
@@ -61,6 +61,20 @@ const Projects = () => {
       featured: false,
       color: '#10b981',
     },
+    {
+      id: 5,
+      title: 'Simon Game – Classic Memory Challenge',
+      description:
+        'An interactive browser-based version of the classic Simon memory game. Players must repeat increasingly complex sequences of colors and sounds, testing and improving their memory skills with each round.',
+      category: 'web',
+      image: '/Capture2.png', // Make sure to add this image to your public folder
+      technologies: ['HTML5', 'CSS3', 'JavaScript (ES6)', 'DOM Manipulation'],
+      githubUrl: 'https://github.com/FaisalSidd123/Simon-Game',
+      featured: false,
+      color: '#f59e0b', // Amber/orange color to differentiate
+    },
+    
+    
   ];
 
   useEffect(() => {

@@ -178,6 +178,7 @@
   cursor: pointer;
   border-radius: 20px;
   transition: var(--pj-ease);
+  margin-bottom: 1rem;
 }
 
 .pj-card-inner {
