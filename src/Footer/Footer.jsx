@@ -114,10 +114,15 @@ const socialLinks = [
 
       <div className="footer-wrapper">
         {/* Logo */}
-        <div className="footer-logo">
-          <div className="logo-ring"></div>
-          <div className="logo-text">FS</div>
-        </div>
+          <div className="mobile-logo-wrapper">
+              <div className="mobile-logo-bg">
+                <div className="mobile-logo-ring"></div>
+              </div>
+              <div className="mobile-logo-text">
+                <span className="mobile-logo-f">F</span>
+                <span className="mobile-logo-s">S</span>
+              </div>
+            </div>
 
         {/* Navigation Links */}
         <div className="footer-nav">
