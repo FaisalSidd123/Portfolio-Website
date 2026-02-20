@@ -580,47 +580,9 @@
   .education-component.education-section {
     padding: 4rem 1.5rem;
   }
-
-  .section-title {
-    font-size: 2.75rem;
-  }
-
-  .timeline-item {
-    margin-bottom: 3rem;
-  }
 }
 
 @media (max-width: 768px) {
-  .education-component.education-section {
-    padding: 3.5rem 1.25rem;
-  }
-
-  .education-header {
-    margin-bottom: 3rem;
-  }
-
-  .section-badge {
-    padding: 0.65rem 1.25rem;
-  }
-
-  .section-badge span {
-    font-size: 0.8rem;
-    letter-spacing: 1.2px;
-  }
-
-  .section-title {
-    font-size: 2.25rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.05rem;
-  }
-
-  .timeline-container {
-    margin: 2.5rem 0;
-  }
-
   .timeline-line {
     left: 30px;
   }
@@ -635,10 +597,6 @@
     font-size: 1.5rem;
   }
 
-  .pulse-ring {
-    inset: -6px;
-  }
-
   .timeline-item.left,
   .timeline-item.right {
     flex-direction: row;
@@ -648,155 +606,31 @@
     width: calc(100% - 80px);
     margin-left: 80px !important;
     margin-right: 0 !important;
-    padding: 1.25rem;
   }
 
   .current-badge {
-    top: 1rem;
-    right: 1rem;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
     font-size: 0.7rem;
-    padding: 0.45rem 0.85rem;
-  }
-
-  .card-header {
-    gap: 0.875rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .card-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
-  }
-
-  .institution-name {
-    font-size: 1.25rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .degree-name {
-    font-size: 0.9rem;
-  }
-
-  .card-meta {
-    gap: 0.65rem;
-    padding: 0.875rem;
-  }
-
-  .meta-item {
-    gap: 0.65rem;
-  }
-
-  .meta-icon {
-    font-size: 0.95rem;
-  }
-
-  .meta-text {
-    font-size: 0.875rem;
-  }
-
-  .achievements-title {
-    font-size: 0.9rem;
-  }
-
-  .achievement-item {
-    gap: 0.65rem;
-    margin-bottom: 0.65rem;
-  }
-
-  .achievement-text {
-    font-size: 0.85rem;
-  }
-
-  .expand-btn {
-    padding: 0.7rem;
-    font-size: 0.85rem;
-    margin-top: 1.25rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .education-stats {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    margin-top: 3rem;
-  }
-
-  .stat-item {
-    padding: 1.25rem;
-  }
-
-  .stat-icon {
-    font-size: 2.25rem;
-  }
-
-  .stat-value {
-    font-size: 2.25rem;
-  }
-
-  .stat-label {
-    font-size: 0.85rem;
-  }
-
-  .floating-shape {
-    filter: blur(50px);
-    opacity: 0.05;
-  }
-
-  .shape-1 {
-    width: 300px;
-    height: 300px;
-  }
-
-  .shape-2 {
-    width: 250px;
-    height: 250px;
-  }
-
-  .shape-3 {
-    width: 200px;
-    height: 200px;
   }
 }
 
 @media (max-width: 480px) {
   .education-component.education-section {
-    padding: 2.5rem 1rem;
-  }
-
-  .education-header {
-    margin-bottom: 2.5rem;
-  }
-
-  .section-badge {
-    padding: 0.6rem 1rem;
-    gap: 8px;
-  }
-
-  .badge-line {
-    width: 20px;
-  }
-
-  .section-badge span {
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+    padding: 3rem 1rem;
   }
 
   .section-title {
-    font-size: 1.85rem;
-    margin-bottom: 1rem;
-  }
-
-  .section-subtitle {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .timeline-container {
-    margin: 2rem 0;
+    font-size: 2rem;
   }
 
   .timeline-line {
     left: 20px;
-    width: 2px;
   }
 
   .timeline-dot {
@@ -809,195 +643,30 @@
     font-size: 1.25rem;
   }
 
-  .pulse-ring {
-    inset: -5px;
-    border-width: 1.5px;
-  }
-
-  .timeline-item {
-    margin-bottom: 2.5rem;
-  }
-
   .education-card {
-    width: calc(100% - 65px);
-    margin-left: 65px !important;
-    padding: 1rem;
-    border-radius: 14px;
-  }
-
-  .current-badge {
-    top: 0.875rem;
-    right: 0.875rem;
-    font-size: 0.65rem;
-    padding: 0.4rem 0.75rem;
-    gap: 0.4rem;
-  }
-
-  .badge-dot {
-    width: 5px;
-    height: 5px;
-  }
-
-  .card-header {
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .card-icon {
-    width: 42px;
-    height: 42px;
-    font-size: 1.35rem;
-    border-radius: 10px;
+    width: calc(100% - 70px);
+    margin-left: 70px !important;
+    padding: var(--spacing-sm);
   }
 
   .institution-name {
     font-size: 1.1rem;
-    margin-bottom: 0.35rem;
-    line-height: 1.25;
   }
 
   .degree-name {
     font-size: 0.85rem;
-    line-height: 1.4;
-  }
-
-  .card-meta {
-    gap: 0.6rem;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-  }
-
-  .meta-item {
-    gap: 0.6rem;
-  }
-
-  .meta-icon {
-    font-size: 0.9rem;
-  }
-
-  .meta-text {
-    font-size: 0.825rem;
-  }
-
-  .card-achievements.expanded {
-    max-height: 400px;
-  }
-
-  .achievements-title {
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .achievement-item {
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
-    padding-left: 0.35rem;
-  }
-
-  .achievement-bullet {
-    width: 5px;
-    height: 5px;
-    margin-top: 0.45rem;
-  }
-
-  .achievement-text {
-    font-size: 0.8rem;
-    line-height: 1.55;
-  }
-
-  .expand-btn {
-    padding: 0.65rem;
-    font-size: 0.8rem;
-    margin-top: 1rem;
-    border-radius: 8px;
-    gap: 0.4rem;
   }
 
   .education-stats {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 2.5rem;
-  }
-
-  .stat-item {
-    padding: 1.15rem;
-    border-radius: 14px;
   }
 
   .stat-icon {
     font-size: 2rem;
-    margin-bottom: 0.75rem;
   }
 
   .stat-value {
     font-size: 2rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-  }
-
-  .floating-shape {
-    filter: blur(40px);
-    opacity: 0.04;
-  }
-
-  .shape-1 {
-    width: 250px;
-    height: 250px;
-  }
-
-  .shape-2 {
-    width: 200px;
-    height: 200px;
-  }
-
-  .shape-3 {
-    width: 180px;
-    height: 180px;
-  }
-}
-
-@media (max-width: 375px) {
-  .education-component.education-section {
-    padding: 2rem 0.875rem;
-  }
-
-  .section-title {
-    font-size: 1.65rem;
-  }
-
-  .timeline-dot {
-    width: 36px;
-    height: 36px;
-  }
-
-  .dot-icon {
-    font-size: 1.1rem;
-  }
-
-  .education-card {
-    width: calc(100% - 60px);
-    margin-left: 60px !important;
-    padding: 0.875rem;
-  }
-
-  .institution-name {
-    font-size: 1rem;
-  }
-
-  .degree-name {
-    font-size: 0.8rem;
-  }
-
-  .card-meta {
-    padding: 0.65rem;
-  }
-
-  .meta-text {
-    font-size: 0.8rem;
   }
 }
 
@@ -1022,4 +691,44 @@
 .expand-btn:focus-visible {
   outline: 2px solid var(--primary-purple);
   outline-offset: 2px;
+}
+
+/* ===================================
+   FIX: CURRENT BADGE MOBILE RESPONSIVE
+   =================================== */
+
+/* Ensure card is positioning context */
+.education-card {
+  position: relative;
+}
+
+/* Tablet adjustment */
+@media (max-width: 768px) {
+
+  .current-badge {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.75rem;
+    white-space: nowrap;
+  }
+
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+  .current-badge {
+    position: static;          /* Remove absolute positioning */
+    display: inline-flex;
+    margin-bottom: 0.75rem;    /* Push content down nicely */
+    align-self: flex-start;
+  }
+
+  /* If you want it above card header cleanly */
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
 }
