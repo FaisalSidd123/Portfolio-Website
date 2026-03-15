@@ -143,9 +143,11 @@ const ModernNav = ({
   };
 
   const handleLogoHover = () => {
-    gsap.to('.logo-ring', {
-      rotation: '+=360',
-      duration: 0.6,
+    gsap.to('.logo-dot', {
+      scale: 1.5,
+      duration: 0.3,
+      yoyo: true,
+      repeat: 1,
       ease: 'power2.out'
     });
   };
@@ -186,18 +188,9 @@ const ModernNav = ({
             {logo ? (
               <img src={logo} alt={name} className="logo-image" />
             ) : (
-              <div className="logo-wrapper">
-                <div className="logo-background">
-                  <div className="logo-ring"></div>
-                  <div className="logo-inner-ring"></div>
-                </div>
-                <div className="logo-content">
-                  <span className="logo-letter logo-f">F</span>
-                  <span className="logo-letter logo-s">S</span>
-                </div>
-                <div className="logo-sparkle sparkle-1">✦</div>
-                <div className="logo-sparkle sparkle-2">✦</div>
-                <div className="logo-glow"></div>
+              <div className="logo-wrapper modern-text-logo">
+                <span className="logo-letter logo-f">F</span>
+                <span className="logo-letter logo-s">S<span className="logo-dot">.</span></span>
               </div>
             )}
           </Link>
@@ -277,13 +270,10 @@ const ModernNav = ({
         <div className="mobile-menu-content">
           {/* Mobile Header */}
           <div className="mobile-header">
-            <div className="mobile-logo-wrapper">
-              <div className="mobile-logo-bg">
-                <div className="mobile-logo-ring"></div>
-              </div>
+            <div className="mobile-logo-wrapper modern-text-logo">
               <div className="mobile-logo-text">
                 <span className="mobile-logo-f">F</span>
-                <span className="mobile-logo-s">S</span>
+                <span className="mobile-logo-s">S<span className="logo-dot">.</span></span>
               </div>
             </div>
             <button 

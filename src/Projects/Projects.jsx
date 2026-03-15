@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Projects.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -90,21 +93,31 @@ const Projects = () => {
   ];
 
   useEffect(() => {
+    // Prevent flash of unstyled content
     gsap.set('.pj-section .pj-header', { opacity: 1 });
     gsap.set('.pj-section .pj-card', { opacity: 1 });
 
     timelineRef.current = gsap
-      .timeline({ defaults: { ease: 'power2.out' } })
+      .timeline({ 
+        defaults: { ease: 'power2.out' },
+        scrollTrigger: {
+          trigger: projectsRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      })
       .from('.pj-section .pj-header', {
-        y: 30,
+        y: 50,
         opacity: 0,
-        duration: 0.8
+        duration: 0.8,
+        clearProps: 'all'
       })
       .from('.pj-section .pj-card', {
-        y: 30,
+        y: 50,
         opacity: 0,
         duration: 0.6,
-        stagger: 0.1
+        stagger: 0.15,
+        clearProps: 'all'
       }, '-=0.4');
 
     return () => { if (timelineRef.current) timelineRef.current.kill(); };

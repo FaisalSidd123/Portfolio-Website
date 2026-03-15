@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProfileCard from './Profile';
 import './About.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('story');
@@ -53,9 +56,16 @@ const About = () => {
     gsap.set('.about-section .about-profile', { opacity: 1 });
 
     // Entrance animations
-    timelineRef.current = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    timelineRef.current = gsap.timeline({ 
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: aboutRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    })
       .from('.about-section .about-header', {
-        y: 30,
+        y: 40,
         opacity: 0,
         duration: 0.8,
         clearProps: 'all'

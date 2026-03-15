@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -88,9 +91,16 @@ const Contact = () => {
     gsap.set('.contact-component .info-section', { opacity: 1 });
 
     // Entrance animations with clearProps to ensure elements remain visible
-    timelineRef.current = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    timelineRef.current = gsap.timeline({ 
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: contactRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    })
       .from('.contact-component .contact-header', {
-        y: 30,
+        y: 40,
         opacity: 0,
         duration: 0.8,
         clearProps: 'all'

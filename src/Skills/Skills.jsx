@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Skills.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -113,9 +116,16 @@ const Skills = () => {
     gsap.set('.skills-component .skill-card', { opacity: 1 });
 
     // Entrance animations
-    timelineRef.current = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    timelineRef.current = gsap.timeline({ 
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: skillsRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    })
       .from('.skills-component .skills-header', {
-        y: 30,
+        y: 40,
         opacity: 0,
         duration: 0.8,
         clearProps: 'all'
