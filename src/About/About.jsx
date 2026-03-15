@@ -55,40 +55,37 @@ const About = () => {
     gsap.set('.about-section .stat-card', { opacity: 1 });
     gsap.set('.about-section .about-profile', { opacity: 1 });
 
-    // Entrance animations
+    // Simplified Entrance animations
     timelineRef.current = gsap.timeline({ 
-      defaults: { ease: 'power3.out' },
+      defaults: { ease: 'power2.out' }, // Simpler easing
       scrollTrigger: {
         trigger: aboutRef.current,
         start: 'top 85%',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none none',
+        fastScrollEnd: true,
+        preventOverlaps: true
       }
     })
       .from('.about-section .about-header', {
-        y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.5,
         clearProps: 'all'
       })
       .from('.about-section .stat-card', {
-        y: 20,
         opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
+        duration: 0.4,
         clearProps: 'all'
-      }, '-=0.4')
+      }, '-=0.2')
       .from('.about-section .tab-content', {
-        y: 20,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.4,
         clearProps: 'all'
-      }, '-=0.3')
+      }, '-=0.2')
       .from('.about-section .about-profile', {
-        x: 50,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.5,
         clearProps: 'all'
-      }, '-=0.6');
+      }, '-=0.3');
 
     return () => {
       if (timelineRef.current) timelineRef.current.kill();

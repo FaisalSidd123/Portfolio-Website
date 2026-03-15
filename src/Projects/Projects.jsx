@@ -99,11 +99,13 @@ const Projects = () => {
 
     timelineRef.current = gsap
       .timeline({ 
-        defaults: { ease: 'power2.out' },
+        defaults: { ease: 'power3.out' },
         scrollTrigger: {
           trigger: projectsRef.current,
           start: 'top 85%',
-          toggleActions: 'play none none none'
+          toggleActions: 'play none none none',
+          fastScrollEnd: true,
+          preventOverlaps: true
         }
       })
       .from('.pj-section .pj-header', {

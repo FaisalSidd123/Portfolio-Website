@@ -74,7 +74,9 @@ const Education = () => {
       scrollTrigger: {
         trigger: educationRef.current,
         start: 'top 85%',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none none',
+        fastScrollEnd: true,
+        preventOverlaps: true
       }
     })
       .from('.education-component .education-header', {

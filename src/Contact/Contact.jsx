@@ -96,7 +96,9 @@ const Contact = () => {
       scrollTrigger: {
         trigger: contactRef.current,
         start: 'top 85%',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none none',
+        fastScrollEnd: true,
+        preventOverlaps: true
       }
     })
       .from('.contact-component .contact-header', {

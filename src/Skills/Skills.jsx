@@ -54,6 +54,12 @@ const Skills = () => {
       icon: '⚛️',
       gradient: 'from-cyan-400 to-blue-500'
     },
+    { 
+      name: 'Next.js', 
+      category: 'frontend',
+      icon: '▲',
+      gradient: 'from-gray-700 to-black'
+    },
 
     // Backend
     { 
@@ -115,35 +121,32 @@ const Skills = () => {
     gsap.set('.skills-component .category-btn', { opacity: 1 });
     gsap.set('.skills-component .skill-card', { opacity: 1 });
 
-    // Entrance animations
+    // Simplified Entrance animations
     timelineRef.current = gsap.timeline({ 
-      defaults: { ease: 'power3.out' },
+      defaults: { ease: 'power2.out' }, // Simpler easing
       scrollTrigger: {
         trigger: skillsRef.current,
         start: 'top 85%',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none none',
+        fastScrollEnd: true,
+        preventOverlaps: true
       }
     })
       .from('.skills-component .skills-header', {
-        y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.5,
         clearProps: 'all'
       })
       .from('.skills-component .category-btn', {
-        scale: 0.8,
+        opacity: 0,
+        duration: 0.4,
+        clearProps: 'all'
+      }, '-=0.2')
+      .from('.skills-component .skill-card', {
         opacity: 0,
         duration: 0.5,
-        stagger: 0.08,
         clearProps: 'all'
-      }, '-=0.4')
-      .from('.skills-component .skill-card', {
-        y: 40,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.1,
-        clearProps: 'all'
-      }, '-=0.3');
+      }, '-=0.2');
 
     return () => {
       if (timelineRef.current) timelineRef.current.kill();

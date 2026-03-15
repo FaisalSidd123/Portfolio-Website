@@ -41,8 +41,7 @@
 .contact-component .floating-element {
   position: absolute;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  filter: blur(70px);
-  opacity: 0.07;
+  opacity: 0.05;
 }
 
 /* Responsive floating elements */
@@ -124,8 +123,6 @@
   gap: clamp(8px, 2vw, 12px);
   padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.5rem);
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
   margin-bottom: clamp(1.5rem, 3vw, 2rem);
@@ -198,8 +195,6 @@
    =================================== */
 .contact-component .form-card {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: clamp(16px, 3vw, 24px);
   padding: clamp(1.5rem, 3vw, 2rem);
@@ -530,8 +525,6 @@
 .contact-component .social-card,
 .contact-component .availability-card {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: clamp(16px, 3vw, 20px);
   padding: clamp(1.25rem, 2.5vw, 1.5rem);
