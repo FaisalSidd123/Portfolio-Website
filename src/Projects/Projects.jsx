@@ -73,8 +73,20 @@ const Projects = () => {
       featured: false,
       color: '#f59e0b', // Amber/orange color to differentiate
     },
-    
-    
+    {
+      id: 6,
+      title: 'Anonymous – Anonymous Messaging Platform',
+      description:
+        'A full-stack anonymous messaging platform where users receive messages through a unique shareable link, featuring secure JWT-based authentication, AI-powered message suggestions, and a personalized dashboard to manage incoming messages.',
+      category: 'web',
+      image: '/Capture4.png',
+      technologies: ['Next.js', 'MongoDB', 'NextAuth.js', 'Zod', 'NodeMailer', 'NVIDIA NIM', 'Tailwind CSS'],
+      githubUrl: 'https://github.com/FaisalSidd123/Anonymous',
+      featured: false,
+      color: '#6366f1',
+    },
+
+
   ];
 
   useEffect(() => {
@@ -83,16 +95,16 @@ const Projects = () => {
 
     timelineRef.current = gsap
       .timeline({ defaults: { ease: 'power2.out' } })
-      .from('.pj-section .pj-header', { 
-        y: 30, 
-        opacity: 0, 
-        duration: 0.8 
+      .from('.pj-section .pj-header', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8
       })
-      .from('.pj-section .pj-card', { 
-        y: 30, 
-        opacity: 0, 
-        duration: 0.6, 
-        stagger: 0.1 
+      .from('.pj-section .pj-card', {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1
       }, '-=0.4');
 
     return () => { if (timelineRef.current) timelineRef.current.kill(); };
@@ -101,24 +113,24 @@ const Projects = () => {
   useEffect(() => {
     if (modalVisible && modalContentRef.current && modalOverlayRef.current) {
       gsap.set(modalOverlayRef.current, { opacity: 0 });
-      gsap.set(modalContentRef.current, { 
-        rotationY: -15, 
+      gsap.set(modalContentRef.current, {
+        rotationY: -15,
         x: -30,
-        transformOrigin: 'left center', 
-        opacity: 0 
+        transformOrigin: 'left center',
+        opacity: 0
       });
-      
-      gsap.to(modalOverlayRef.current, { 
-        opacity: 1, 
-        duration: 0.4, 
-        ease: 'power2.out' 
+
+      gsap.to(modalOverlayRef.current, {
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out'
       });
-      
-      gsap.to(modalContentRef.current, { 
-        rotationY: 0, 
+
+      gsap.to(modalContentRef.current, {
+        rotationY: 0,
         x: 0,
-        opacity: 1, 
-        duration: 0.6, 
+        opacity: 1,
+        duration: 0.6,
         ease: 'power3.out',
         delay: 0.1
       });
@@ -134,25 +146,25 @@ const Projects = () => {
   const closeModal = useCallback(() => {
     if (modalContentRef.current && modalOverlayRef.current) {
       gsap.to(modalContentRef.current, {
-        rotationY: -15, 
+        rotationY: -15,
         x: -30,
-        opacity: 0, 
-        duration: 0.4, 
+        opacity: 0,
+        duration: 0.4,
         ease: 'power2.in',
-        onComplete: () => { 
-          setModalVisible(false); 
-          setSelectedProject(null); 
-          document.body.style.overflow = ''; 
+        onComplete: () => {
+          setModalVisible(false);
+          setSelectedProject(null);
+          document.body.style.overflow = '';
         },
       });
-      gsap.to(modalOverlayRef.current, { 
-        opacity: 0, 
-        duration: 0.3, 
-        ease: 'power2.in' 
+      gsap.to(modalOverlayRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in'
       });
     } else {
-      setModalVisible(false); 
-      setSelectedProject(null); 
+      setModalVisible(false);
+      setSelectedProject(null);
       document.body.style.overflow = '';
     }
   }, []);
@@ -184,7 +196,7 @@ const Projects = () => {
             Featured <span className="pj-header-gradient">Projects</span>
           </h2>
           <p className="pj-header-subtitle">
-            A collection of my best work — each project is crafted with attention to detail 
+            A collection of my best work — each project is crafted with attention to detail
             and a focus on user experience.
           </p>
         </div>
@@ -202,7 +214,7 @@ const Projects = () => {
             >
               {/* Card accent line */}
               <div className="pj-card-accent"></div>
-              
+
               {/* Card inner */}
               <div className="pj-card-inner">
                 {/* Image */}
@@ -214,13 +226,13 @@ const Projects = () => {
                       <span>🖼️</span>
                     </div>
                   )}
-                  
+
                   {/* Overlay */}
                   <div className="pj-card-overlay">
                     <div className="pj-card-overlay-content">
                       <span>View Project</span>
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" />
                       </svg>
                     </div>
                   </div>
@@ -264,7 +276,7 @@ const Projects = () => {
       {modalVisible && selectedProject && (
         <div className="pj-modal" ref={modalRef} onClick={closeModal}>
           <div className="pj-modal-overlay" ref={modalOverlayRef}></div>
-          
+
           <div
             className="pj-modal-content"
             ref={modalContentRef}
@@ -273,7 +285,7 @@ const Projects = () => {
             {/* Close button */}
             <button className="pj-modal-close" onClick={closeModal}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2"/>
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" />
               </svg>
             </button>
 
@@ -307,10 +319,10 @@ const Projects = () => {
                 </h4>
                 <div className="pj-modal-tech">
                   {selectedProject.technologies.map((tech, i) => (
-                    <span 
-                      key={i} 
+                    <span
+                      key={i}
                       className="pj-modal-tech-item"
-                      style={{ 
+                      style={{
                         background: `${selectedProject.color}10`,
                         color: selectedProject.color,
                         borderColor: `${selectedProject.color}30`
@@ -334,7 +346,7 @@ const Projects = () => {
                   </svg>
                   View Code
                 </a>
-                
+
                 <button
                   className="pj-modal-btn pj-modal-btn-primary"
                   style={{ background: selectedProject.color }}
@@ -345,7 +357,7 @@ const Projects = () => {
                 >
                   Let's Talk
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" strokeWidth="2" />
                   </svg>
                 </button>
               </div>
